@@ -53,7 +53,7 @@ if (d == 1){
 // ¿PALETA DE COLOR? vs ¿ARCOIRIS?
 background(255);
 //fill(255,200,80);
-strokeWeight(30);
+strokeWeight(1);
 stroke(250,150,60);
 fill(20,50,90);
 ellipse(width/2, height/2, 300, 300);
@@ -70,8 +70,8 @@ noStroke();
       noStroke();                    // sin bordes
 /////////////// ¿¿¿¿AGREGAR TRANSPARENCIA?????  /////////////////////
     //fill(sin(radians(i/2))*255, 50, sin(radians(i*3))*100);   // fill con gradiente R0-R255, b0-b255
-    fill(sin(radians(p/2))*255, 150, 200);                    // esto hara que palpite el anillo
-    //fill(sin(radians(i/2))*cg, 200, 150);                       // prueba gradientes cambiantes
+    //fill(sin(radians(p/2))*255, 150, 200);                    // esto hara que palpite el anillo
+    fill(sin(radians(i/2))*cg, 200, 150);                       // prueba gradientes cambiantes
       rect(0, 0, 120, 20, 25);
       popMatrix();
 
@@ -171,5 +171,20 @@ background(200,150,190);
 //////////////////////////////////////////////////////////////////////
 
 - Revisar el leerpColor();
--
+- ROTACION DE COORDENADAS POLARES: A difierencia de los movimientos en el plano, yo solo necesito
+  un angulo y
+
+// cada elemento tiene que tener su pocicion
+float x, y;  // cordenadas cartesianas
+float angle, r;  // coordenadas polares
+
+void setup(){
+size(500,500);
+}
+
+void draw(){
+background(255);
+translate(width/2, heigth/2);
+ellipse(x,y 10,10)
+}
 */
