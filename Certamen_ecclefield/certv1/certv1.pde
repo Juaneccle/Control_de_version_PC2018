@@ -188,6 +188,28 @@ translate(width/2, heigth/2);
 ellipse(x,y 10,10)
 }
 
+////////////////////////////// LERP COLOR ////////////////////////////
 
+float desdex, desdey, hastax, hastay;  // cordenadas cartesianas
 
+void setup(){
+size (500,500);
+fill(50);
+}
+
+void drwa(){
+background(255);
+//translate(width/2, height/2);
+
+desdex = lerp(desdex, hastax, 0);
+desdey = lerp(desdey, hastay, 0);
+
+ellipse(desdex, desdey, 10,10);
+}
+
+void mousePressed(){
+
+hastax = mouseX;
+hastay = mouseY;
+}
 */
