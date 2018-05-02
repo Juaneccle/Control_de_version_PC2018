@@ -23,7 +23,7 @@ text(r,x,y - 10);
 text("r: ",x,y - 10);
 text(angle,x-50,y - 10);
 text("angle: ",x-50,y - 10);
-text("cos: "+ cos(angle), x -50, y -30);
+text("cos: "+  cos(angle), x -50, y -30);
 }
 
 void keyPressed(){
