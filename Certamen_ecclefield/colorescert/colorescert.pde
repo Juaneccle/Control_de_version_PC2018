@@ -10,7 +10,7 @@ color to = color(0, 102, 153);             // HASTA
 color interA = lerpColor(from, to, .33);   // Pibote intermedio de color
 color interB = lerpColor(from, to, .66);   // Pibote intermedio de color
 
-color cObjeto, c1,c2;
+color c1,c2;
 
 color desde = color     (208,80,114);
 color hasta = color     (96,151,158);
@@ -40,10 +40,10 @@ void setup(){
  c2 = color(199,229,219);
 
  size(800,800);
- lista = new color[f];
- for(int i = 0; i < f/2; i ++){
- float amt = map(i,0,f/2,0,1);
- lista[i] = lerpColor(c1,c2,amt);
+ lista = new color[f];                  // f represenata el total de los objetos en lista
+ for(int i = 0; i < f/2; i ++){         //  f/2 para que el maximo del for se manifieste justo en la mitad
+ float amt = map(i,0,f/2,0,1);          // mapear el valor de i para incorporarlo al lerp ("solo acepta 1 - 0")
+ lista[i] = lerpColor(c1,c2,amt);       // Esta lista es la que describe los limites de colores (En el lerp)
  }
 }
 
@@ -54,9 +54,14 @@ void draw(){
 // fill(lista[i]);
 //   ellipse(x + i *22, y + i*22,20,20);
 // }
-background(255);
 
-  noStroke();
+  //background(255);     // comprobar el color de los objetos
+  //fill(c1);            // comprobar el color de los objetos
+  //rect(10,10,50,50);
+
+  //noStroke();
+  stroke(0);
+  strokeWeight(3);
   translate(width/2, height/2);       // punto (0,0)/ ORIGEN en el centro del sketch
   for(int i = 0; i < f; i++){      // i = angulo de rotacion 0-360/ Separacion entre lineas
     // float x = sin(radians(i))*150;  // variable de rotacion
@@ -73,7 +78,7 @@ else {
       translate(x, y);
    rotate(radians(360/f));
       //rotate(radians(i));    // proporciona movimiento al sketch/ cambia los ejes/ direccion de rotacion
-      noStroke();                    // sin bordes
+  //    noStroke();                    // sin bordes
     //  lerpColor(desde,hasta,medG);
       rect(20, 20, 120, 20, 25);
 

@@ -30,25 +30,25 @@ void draw(){
 // COMPROBACIONES
 //println(cg);
 
-//VARIABLES DE MOVMIENTO
-p = p + 5;
- cg = cg +10;
-
-// Variables de contorno cambio de color
-if (cg > 500){
- f = 1;
-}
-
-if (cg < -10){
- d = 1;
-}
-if (f == 1){
- cg = cg - 15;
-}
-
-if (d == 1){
- cg = cg + 15;
-}
+// //VARIABLES DE MOVMIENTO
+// p = p + 5;
+//  cg = cg +10;
+//
+// // Variables de contorno cambio de color
+// if (cg > 500){
+//  f = 1;
+// }
+//
+// if (cg < -10){
+//  d = 1;
+// }
+// if (f == 1){
+//  cg = cg - 15;
+// }
+//
+// if (d == 1){
+//  cg = cg + 15;
+// }
 // ANILLO EXTERIOR 1
 // ¿PALETA DE COLOR? vs ¿ARCOIRIS?
 background(214,190,130);
@@ -115,6 +115,29 @@ for(int i = 0; i < 360; i+=20){
 
 
 /*
+
+////// TODOs LO DEL COLOR ANTIGUO /////////
+// //VARIABLES DE MOVMIENTO
+// p = p + 5;
+//  cg = cg +10;
+//
+// // Variables de contorno cambio de color
+// if (cg > 500){
+//  f = 1;
+// }
+//
+// if (cg < -10){
+//  d = 1;
+// }
+// if (f == 1){
+//  cg = cg - 15;
+// }
+//
+// if (d == 1){
+//  cg = cg + 15;
+// }
+
+
 ArrayList<Vert1> lista = new ArrayList<Vert1>();
 
 float p = 0;
