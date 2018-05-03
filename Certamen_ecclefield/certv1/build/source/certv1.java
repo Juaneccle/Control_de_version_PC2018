@@ -254,7 +254,6 @@ void bubls(){
 
 }
 */
-
   public void settings() { 
 size(800,800); }
   static public void main(String[] passedArgs) {
