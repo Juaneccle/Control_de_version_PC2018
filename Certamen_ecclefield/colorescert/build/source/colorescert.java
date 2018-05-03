@@ -70,10 +70,10 @@ public void draw(){
 // fill(lista[i]);
 //   ellipse(x + i *22, y + i*22,20,20);
 // }
-  background(255);
-  fill(c1);
 
-    rect(10,10,50,50);
+  //background(255);     // comprobar el color de los objetos
+  //fill(c1);            // comprobar el color de los objetos
+  //rect(10,10,50,50);
 
   //noStroke();
   stroke(0);
@@ -93,9 +93,9 @@ else {
 
       translate(x, y);
    rotate(radians(360/f));
-      //rotate(radians(i));    // proporciona movimiento al sketch/ cambia los ejes/ direccion de rotacion
-  //    noStroke();                    // sin bordes
-    //  lerpColor(desde,hasta,medG);
+      // rotate(radians(i));    // proporciona movimiento al sketch/ cambia los ejes/ direccion de rotacion
+      // noStroke();                    // sin bordes
+      // lerpColor(desde,hasta,medG);
       rect(20, 20, 120, 20, 25);
 
     //  popMatrix();

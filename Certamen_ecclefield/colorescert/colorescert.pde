@@ -77,9 +77,9 @@ else {
 
       translate(x, y);
    rotate(radians(360/f));
-      //rotate(radians(i));    // proporciona movimiento al sketch/ cambia los ejes/ direccion de rotacion
-  //    noStroke();                    // sin bordes
-    //  lerpColor(desde,hasta,medG);
+      // rotate(radians(i));    // proporciona movimiento al sketch/ cambia los ejes/ direccion de rotacion
+      // noStroke();                    // sin bordes
+      // lerpColor(desde,hasta,medG);
       rect(20, 20, 120, 20, 25);
 
     //  popMatrix();
