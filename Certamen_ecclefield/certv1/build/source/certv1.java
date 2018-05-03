@@ -47,7 +47,7 @@ public void draw(){
 //println(cg);
 
 //VARIABLES DE MOVMIENTO
-p = p + 10;
+p = p + 5;
  cg = cg +10;
 
 // Variables de contorno cambio de color
@@ -67,14 +67,14 @@ if (d == 1){
 }
 // ANILLO EXTERIOR 1
 // ¿PALETA DE COLOR? vs ¿ARCOIRIS?
-background(255);
+background(214,190,130);
 //fill(255,200,80);
 strokeWeight(1);
 stroke(250,150,60);
 fill(20,50,90);
 ellipse(width/2, height/2, 300, 300);
 
- //strokeWeight(1);
+ strokeWeight(35);
 noStroke();
   translate(width/2, height/2);       // punto (0,0)/ ORIGEN en el centro del sketch
   for(int i = 0; i < 360; i+=1.5f){      // i = angulo de rotacion 0-360/ Separacion entre lineas
@@ -203,6 +203,31 @@ background(255);
 translate(width/2, heigth/2);
 ellipse(x,y 10,10)
 }
+
+////////////////////////////// LERP COLOR ////////////////////////////
+
+float desdex, desdey, hastax, hastay;  // cordenadas cartesianas
+
+void setup(){
+size (500,500);
+fill(50);
+}
+
+void drwa(){
+background(255);
+//translate(width/2, height/2);
+
+desdex = lerp(desdex, hastax, 0);
+desdey = lerp(desdey, hastay, 0);
+
+ellipse(desdex, desdey, 10,10);
+}
+
+void mousePressed(){
+
+hastax = mouseX;
+hastay = mouseY;
+}
 */
 
 /*
@@ -229,6 +254,7 @@ void bubls(){
 
 }
 */
+
   public void settings() { 
 size(800,800); }
   static public void main(String[] passedArgs) {
