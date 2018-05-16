@@ -68,6 +68,7 @@ void draw(){
     //float y = cos(radians(i))*150;  // variable de rotacion
 
       //pushMatrix();
+      
   if (i < 12){
     fill(lista[i]);
   }

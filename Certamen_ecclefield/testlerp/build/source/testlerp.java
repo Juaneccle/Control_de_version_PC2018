@@ -14,9 +14,13 @@ import java.io.IOException;
 
 public class testlerp extends PApplet {
 
+///////////////////// ESTUDIAR ESTA PORQUERIA ///////////////////////////
+
 float desdex, desdey, hastax, hastay;  // cordenadas cartesianas
 float amt;
 int cObjeto, c1,c2;
+int [] lista;
+
 
 public void setup(){
 
@@ -34,6 +38,12 @@ lista[i] = lerpColor(c1,c2,amt);
 
 public void draw(){
 background(255);
+for (int i = 0; i < 10; i ++){
+fill(cObjeto);
+fill(lista[i]);
+  ellipse(x + i *22, y + i*22,20,20);
+}
+
 if (amt > 1){
   amt = 0;
 }
