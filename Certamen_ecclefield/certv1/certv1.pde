@@ -54,12 +54,7 @@
 //(255, 82, 51)  // Naranjo
 
 //CLASES
-Vert1 a;
-
-// COLOR
-color original1 = color(#5db5a4);
-color original2 = color(#f57a82);
-color original3 = color(#ed5276);
+Vert1 a;     // SE DEFINE LA CLASE
 
 // COLOR CONTORNOS
 color c1   = color(50,77,92);         // Original
@@ -67,9 +62,9 @@ color c1_c = color(0);                // cambio otro color stroke pequeño
 color c2   = color(240,67,58);        // Original
 color c2_c = color(255);              // cambio otro color stroke grande
 color ef   = color(240, 202, 77);     // color ellipse del fondo
-color ef_c = color(240, 202, 77);     // color ellipse del fondo cambio
-color f1_c = color(0);
-color t1_c = color(0);
+color ef_c = color(240, 202, 77);     // Cambia el color ellipse del fondo
+color f1_c = color(0);                // Cambia color a negro: Afecta a lerp color
+color t1_c = color(0);                // Cambia color a negro: Afecta a lerp color
 
 // Cuarta paleta de colores
 
@@ -126,102 +121,90 @@ background(255);
 size(800,800);
 }
 
-             void draw(){
-             // COMPROBACIONES
-             background(255);
-//             println(p);
+void draw(){
+// COMPROBACIONES
+  background(255);
+//VARIABLES DE MOVMIENTO
+  p = p + 10;
+  cg = cg +10;
+// Variables de contorno cambio de color
+  if (cg > 500){
+    f = 1;
+  }
 
-             //VARIABLES DE MOVMIENTO
-             p = p + 10;
-             cg = cg +10;
+  if (cg < -10){
+    d = 1;
+  }
 
-             // Variables de contorno cambio de color
-             if (cg > 500){
-              f = 1;
-             }
+  if (f == 1){
+    cg = cg - 15;
+  }
 
-             if (cg < -10){
-              d = 1;
-             }
-             if (f == 1){
-              cg = cg - 15;
-             }
-
-             if (d == 1){
-              cg = cg + 15;
-             }
+  if (d == 1){
+    cg = cg + 15;
+  }
              // ANILLO EXTERIOR 1
              // ¿PALETA DE COLOR? vs ¿ARCOIRIS?
 
 ///////////////////////// FOONDO INTERACTIVO ////////////////////////////////
 //println(telx, tely);
+///////////////////////// GRADIENTE ELIPSES ////////////////////////
 noFill();
+// 1.-
 strokeWeight(165);
 stroke(t1);
 ellipse(height/2, width/2, 455,455);
-
+// 2.-
 strokeWeight(15);
 stroke(i6);
 ellipse(height/2, width/2, 475,475);
-
+// 3.-
 strokeWeight(15);
 stroke(i5);
 ellipse(height/2, width/2, 495,495);
-
+// 4.-
 strokeWeight(15);
 stroke(i4);
 ellipse(height/2, width/2, 515,515);
-
+// 5.-
 strokeWeight(15);
 stroke(i3);
 ellipse(height/2, width/2, 535,535);
-
+// 6.-
 strokeWeight(15);
 stroke(i2);
 ellipse(height/2, width/2, 555,555);
-
+// 7.-
 strokeWeight(15);
 stroke(i1);
 ellipse(height/2, width/2, 575,575);
-
+// 8.-
 strokeWeight(40);
 stroke(f1);
 ellipse(height/2, width/2, 620,620);
 
-
 ////////////////////////// ELLIPSE CENTRAL /////////////////////////////////
 
-             //fill(255,200,80);
-             //strokeWeight(20);
-             // stroke(250,150,60);
-             noStroke();
-             fill(ef);                                   // Color de ellipse del centro
-             ellipse(width/2, height/2, 300, 300);             // Ellipse del centro
-
-
+   noStroke();                                   // Sin Bordes
+   fill(ef);                                     // Color de ellipse del centro
+   ellipse(width/2, height/2, 300, 300);         // Ellipse del centro
 
 /////////////////////////// ANILLO FONDO //////////////////////////////////
 
-             strokeWeight(30);
-             noStroke();                           // sin bordes, IMPORTANTE
-               translate(width/2, height/2);       // punto (0,0)/ ORIGEN en el centro del sketch
-               for(int i = 0; i < 360; i+=1.5){      // i = angulo de rotacion 0-360/ Separacion entre lineas
-                   float x = sin(radians(i))*150;  // variable de rotacion
-                   float y = cos(radians(i))*150;  // variable de rotacion
-                   pushMatrix();
-                   translate(x, y);
-                   rotate(radians(-i+frameCount));    // proporciona movimiento al sketch/ cambia los ejes/ direccion de rotacion
-
- // COLOR
- //222,91,73
- //70,179,157);
- // 70,179,157
-                 fill(sin(radians(p/2))*2*70, 179, 157);                        // esto hara que palpite el anillo
-                 //fill(sin(radians(i/2))*255, 50, sin(radians(i*3))*100);     // fill con gradiente R0-R255, b0-b255
-                 //fill(sin(radians(i/2))*cg, 200, 150);                       // prueba gradientes cambiantes
-
-                   rect(0, 0, 120, 20, 25);
-                   popMatrix();
+   strokeWeight(30);
+   noStroke();                                 // sin bordes, IMPORTANTE
+   translate(width/2, height/2);               // punto (0,0)/ ORIGEN en el centro del sketch
+   for(int i = 0; i < 360; i+=1.5){            // i = angulo de rotacion 0-360/ Separacion entre lineas
+       float x = sin(radians(i))*150;          // variable de rotacion
+       float y = cos(radians(i))*150;          // variable de rotacion
+       pushMatrix();
+       translate(x, y);
+       rotate(radians(-i+frameCount));                                   // proporciona movimiento al sketch/ cambia los ejes/ direccion de rotacion
+       fill(sin(radians(p/2))*2*70, 179, 157);                           // esto hara que palpite el anillo
+       //fill(sin(radians(i/2))*255, 50, sin(radians(i*3))*100);         // fill con gradiente R0-R255, b0-b255
+       //fill(sin(radians(i/2))*cg, 200, 150);                           // prueba gradientes cambiantes
+       rect(0, 0, 120, 20, 25);
+       popMatrix();
 }
 
 if (keyPressed) {
@@ -236,26 +219,23 @@ if (keyPressed) {
  }
  }
  if (h == 2){
-   fill(c3_v);
-   ellipse(0,0,1500,1500);
-
- for(int i = 0; i < 360; i+=20){
-  float x = sin(radians(i))*150;
-  float y = cos(radians(i))*150;
-  pushMatrix();
-    translate(x, y);
-    rotate(radians(-i-frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-    noStroke();                     // COLOR ANILLO DE PETALOS
-  // COLOR
-  //fill(sin(radians(i/2))*255, 50, 100);
-    fill(115, 22, 48);
-    rect(0, 50, 120, 20, 25);
-  popMatrix();
-     }
- stroke(c1_v);
- strokeWeight(50);
- noFill();
- ellipse(0,0,600,600);
+    fill(c3_v);
+    ellipse(0,0,1500,1500);
+    for(int i = 0; i < 360; i+=20)  {
+       float x = sin(radians(i))*150;
+       float y = cos(radians(i))*150;
+       pushMatrix();
+       translate(x,y);
+       rotate(radians(-i-frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
+       noStroke();                     // COLOR ANILLO DE PETALOS
+       fill(115,22,48);
+       rect(0,50,120,20, 25);
+       popMatrix();
+    }
+    stroke(c1_v);
+    strokeWeight(50);
+    noFill();
+    ellipse(0,0,600,600);
  }
 
 /////////////////////////// ANILLO EXTERIOR //////////////////////////////////
@@ -306,14 +286,14 @@ if (k == 2){
 
     }
 
-strokeWeight(60);
-stroke(#324d5c);
-noFill();
-ellipse(0,0, 600, 600);
+  strokeWeight(60);
+  stroke(#324d5c);
+  noFill();
+  ellipse(0,0, 600, 600);
 
-noStroke();
-fill(#324d5c);
-ellipse(0,0,120,120);
+  noStroke();
+  fill(#324d5c);
+  ellipse(0,0,120,120);
 }
 
 if (j == 2){
@@ -323,44 +303,40 @@ if (j == 2){
   ellipse(0,0, 560,560);
 }
 
-///////////////////////////// Interaccion ///////////////////////////////
+///////////////////////////// INTERACCIONES ///////////////////////////////
 
 if (mousePressed) {
-k = 2;
-j = 1;
-l = l + 0.1;
-   } else {
-k = 1;
+  k = 2;
+  j = 1;
+  l = l + 0.1;
+  } else {
+    k = 1;
+}
 
-   }
-
+// BOTON CAMBIO DE COLOR
 if (keyPressed) {
-      if (key == 'b' || key == 'B') {
-        j = 2;
-        c1 = c1_c;
-        ef = c2_c;
+  if (key == 'b' || key == 'B') {
+    j = 2;
+    c1 = c1_c;
+    ef = c2_c;
 
-      f1 = color (0);
-      t1 = color(0);
-
-      }
-  }
-
-
-// CAMBIO DE COLOR
+    f1 = color (0);
+    t1 = color(0);
+    }
+}
 
 // BOTON RESSET
 if (keyPressed) {
-      if (key == 'r' || key == 'R') {
-        background(255);
-        c1_c = c1;
-        c2_c = c2;
-        ef_c = ef;
-        j = 1;
-        f1 = color(237,82,118);
-        t1 = color(70,179,157);
- }
- }
+  if (key == 'r' || key == 'R') {
+    background(255);
+    c1_c = c1;
+    c2_c = c2;
+    ef_c = ef;
+    j = 1;
+    f1 = color(237,82,118);
+    t1 = color(70,179,157);
+    }
+}
 }
 
 /*
