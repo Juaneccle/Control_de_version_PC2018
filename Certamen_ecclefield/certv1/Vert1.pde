@@ -7,7 +7,7 @@ class Vert1{
   int g = 103 ;
   int b = 63 ;
 Vert1(){
-  
+
 }
 
 
