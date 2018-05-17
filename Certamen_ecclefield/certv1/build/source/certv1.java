@@ -14,13 +14,14 @@ import java.io.IOException;
 
 public class certv1 extends PApplet {
 
-//INSTRUCCIONES//
 /*
+//INSTRUCCIONES//
+
 1.-
 2.-
 3.-
 4.-
-*/
+
 
 
 //////////////////////////////////// SKETCH ////////////////////////////////////
@@ -35,38 +36,8 @@ public class certv1 extends PApplet {
                           // HACER QUE LA VELOCIDAD CAMBIE CON KEYPRESSED
                           // INCORPORAR UNA INTERACCION CON EL MOUSE (¿GRADIENTES? ¿COS, SIN? ¿?)
 
-//////// PALETA PRINCIPALES ////////
+*/
 
-// 1.-
-
-//(63,43,55);                 // BURDEO OSCURO
-//(84,0,50)                   // BURDEO no tan OSCURO
-//(130,3,51)                  // MORADO
-//(201,40,62)                 // ROJO
-//(240,67,58)                 // NARANJO
-
-// 2.-
-
-// (#3c989e) (60, 152, 158)   // Celeste mas oscuro
-// (#5db5a4) (93, 181, 164)   // CELESTE
-// (#f4cda5) (244, 205, 165)  // beige
-// (#f57a82) (245, 122, 130)  // rosado mas piola
-// (#ed5276) (237,82, 118)    // ROSADO
-
-// 3.-
-
-//(#f0ca4d) (240, 202, 77)     // AMARILLO
-//(#e37b40)                    // NARANJO
-//(#46b39d)                    // CELESTE
-//(#de5b49)                    // ROJISO
-//(#324d5c) (50,77,92)         // GRIS AZULADO
-
-// 4.-
-//(38, 24, 34)                 // burdeo muy oscuro
-//(64, 21, 42)                 // Morado oscuro
-//(115, 22, 48)                // burdeo
-//(204, 31, 45)                // Rojo
-//(255, 82, 51)                // Naranjo
 
 // LISTAS
 int[] colores;
@@ -359,14 +330,38 @@ if (keyPressed) {                               // Interacción tecla
 
 
 
+//////// PALETA PRINCIPALES ////////
 
+// 1.-
 
+//(63,43,55);                 // BURDEO OSCURO
+//(84,0,50)                   // BURDEO no tan OSCURO
+//(130,3,51)                  // MORADO
+//(201,40,62)                 // ROJO
+//(240,67,58)                 // NARANJO
 
+// 2.-
 
+// (#3c989e) (60, 152, 158)   // Celeste mas oscuro
+// (#5db5a4) (93, 181, 164)   // CELESTE
+// (#f4cda5) (244, 205, 165)  // beige
+// (#f57a82) (245, 122, 130)  // rosado mas piola
+// (#ed5276) (237,82, 118)    // ROSADO
 
+// 3.-
 
+//(#f0ca4d) (240, 202, 77)     // AMARILLO
+//(#e37b40)                    // NARANJO
+//(#46b39d)                    // CELESTE
+//(#de5b49)                    // ROJISO
+//(#324d5c) (50,77,92)         // GRIS AZULADO
 
-
+// 4.-
+//(38, 24, 34)                 // burdeo muy oscuro
+//(64, 21, 42)                 // Morado oscuro
+//(115, 22, 48)                // burdeo
+//(204, 31, 45)                // Rojo
+//(255, 82, 51)                // Naranjo
 
 
 

@@ -1,25 +1,17 @@
 /*
 //INSTRUCCIONES//
 
-1.-
-2.-
-3.-
-4.-
-
-
+1.	Presionando la tecla “n” se cambian los colores a una paleta de colores predefinida, además se agrega una forma que hace que la composición sea más interesante y distinta.
+2.	Presionando la tecla “m” se cambian los colores a una paleta de colores aleatoria, además se le agrega una forma que hace que la composición sea más interesante y distinta.
+3.	Presionando la tecla “b” algunos de los colores se cambian por blancos y negros.
+4.	Presionando el mouse la composición se convierte en otra, con otros movimientos, colores y formas.
+5.	Presionando la tecla  ”r” el sketch se reinicia.
 
 //////////////////////////////////// SKETCH ////////////////////////////////////
 
 //OBJETIVOS: // HACER QUE CAMBIE DE COLOR CON ArrayList DE COLOR/
              // HACER QUE LA VELOCIDAD CAMBIE CON KEYPRESSED
              // INCORPORAR UNA INTERACCION CON EL MOUSE (¿GRADIENTES? ¿COS, SIN? ¿?)
-
-//////////////////////////////////// SKETCH ////////////////////////////////////
-
-             //OBJETIVOS: // HACER QUE CAMBIE DE COLOR CON ArrayList DE COLOR/
-                          // HACER QUE LA VELOCIDAD CAMBIE CON KEYPRESSED
-                          // INCORPORAR UNA INTERACCION CON EL MOUSE (¿GRADIENTES? ¿COS, SIN? ¿?)
-
 */
 
 
@@ -93,13 +85,13 @@ void draw(){
   background(255);         // Fondo permamente
   a.lerpcc();              //Gradiente usando lerp: Cargar una funcion desde la clase
 
-///////////////////////////////// ELLIPSE CENTRAL ///////////////////////////////////
+/////////////////////////////////////////////////// ELLIPSE CENTRAL ////////////////////////////////////////////////////
 
    noStroke();                                   // Sin Bordes
    fill(ef);                                     // Color de ellipse del centro
    ellipse(width/2, height/2, 300, 300);         // Ellipse del centro
 
-/////////////////////////////////// ANILLO FONDO //////////////////////////////////
+////////////////////////////////////////////////////// ANILLO FONDO ////////////////////////////////////////////////////
 
    strokeWeight(30);
    noStroke();                                      // Sin bordes
@@ -115,7 +107,7 @@ void draw(){
        popMatrix();                                 // Cerrando propiedades independientes
 }
 
-//////////////////////////////// INTERACCIÓN TECLA "M" /////////////////////////////////
+/////////////////////////////////////////////// INTERACCIÓN TECLA "M" /////////////////////////////////////////////////
 
   if(g == 2){                               // Condicion para interacción tecla "m"
     fill(colores[0]);                       // Se rellena con el primer color de la lista
@@ -154,7 +146,7 @@ void draw(){
 
 }
 
-//////////////////////////////// INTERACCIONES TECLA "N"  /////////////////////////////////
+//////////////////////////////////////////// INTERACCIONES TECLA "N"  ////////////////////////////////////////////////////
 
 if (keyPressed) {                          // Estado permanente al apretar "n"
       if (key == 'n' || key == 'N') {      // Solo si apreta la tecla "n" o "N": Cambio de paleta y activación de boolean "h"
@@ -214,7 +206,7 @@ for(int i = 0; i < 360; i+=12){
   popMatrix();                              // Cerrando propiedades independientes
 }
 
-/////////////////////////////////// IINTERACCIÓN MOUSE ////////////////////////////////////////////
+////////////////////////////////////////// IINTERACCIÓN MOUSE ///////////////////////////////////////////////////////////////
 
 if (k == 2){
   fill(#f0ca4d);                          // Se rellena con el color Amarillo
@@ -270,7 +262,6 @@ if (keyPressed) {                        // Interacción de teclado
 }
 
 // BOTON CAMBIO DE COLOR
-
 if (keyPressed) {                           // Interacción de teclado
   if (key == 'b' || key == 'B') {           // Cuando apreto la tecla "b"
     j = 2;                                  // Se activa la booleana
