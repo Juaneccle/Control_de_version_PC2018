@@ -286,26 +286,28 @@ strokeWeight(30);
 
 if (k == 2){
   fill(0xfff0ca4d);
-  noStroke();                    // Colocar color de paleta seleccionada
-  ellipse(0, 0, 600, 600);                // Elipse de fondoque va a tapar el sketch
+  noStroke();                          // Colocar color de paleta seleccionada
+  ellipse(0,0,600,600);                // Elipse de fondoque va a tapar el sketch
   for(int i = 0; i < 360; i+=10){
-    float x = sin(radians(i))*150;  // suma al origen
-    float y = cos(radians(i))*150;  // suma al origen // intenta sacarle a la multiplicacion
-    rotate(radians(l));             // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-    stroke(0xffde5b49);                     // sin bordes
-  // COLOR
-    fill(0xff3c989e);
-    rect(0, 0, 120, 5, 15);
-    rect(160,160, 50,50);
-    noStroke();
-    ellipse(120,120,15,15);
+     float x = sin(radians(i))*150;       // suma al origen
+     float y = cos(radians(i))*150;       // suma al origen // intenta sacarle a la multiplicacion
+     rotate(radians(l));                  // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
+     stroke(0xffde5b49);                     // Color de bordes
+     fill(0xff3c989e);                       // Color relleno de ellipses pequeñas y rectangulos del borde
+     rect(0,0,120,5,15);                  // Rectangulo central de la interacción
+     rect(160,160,50,50);                 // Rectangulos perifericos
+     noStroke();                          // Sin bordes
+     ellipse(120,120,15,15);              // Elipses pequeñas que se forman en la interaccón
+  }
 
-    }
+  strokeWeight(60);               // Contorno figura interactiva
+  stroke(0xff324d5c);                // Color contorno de la figura
+  noFill();                       // Para que sea solo el contorno / Sin relleno
+  ellipse(0,0, 600, 600);         // Se crea una elipse del mismo tamaño que el sketch anterior
 
-  strokeWeight(60);
-  stroke(0xff324d5c);
-  noFill();
-  ellipse(0,0, 600, 600);
+  noStroke();                     // Sin bordes
+  fill(0xff324d5c);                  // Color elipse central de la interacción
+  ellipse(0,0,120,120);           //
 
   noStroke();
   fill(0xff324d5c);
