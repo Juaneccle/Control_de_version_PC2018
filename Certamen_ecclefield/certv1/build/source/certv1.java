@@ -69,6 +69,9 @@ public class certv1 extends PApplet {
 //(204, 31, 45)  // Rojo
 //(255, 82, 51)  // Naranjo
 
+// LISTAS
+int[] colores;
+
 //CLASES
 Vert1 a;     // SE DEFINE LA CLASE
 
@@ -90,6 +93,9 @@ int c3_v = color(244, 205, 165);
 int ef_v = color(255, 82, 51);    //Afecta lado no sombreado color ellipse del fondo cambio
 int f1_v = color(0);
 int t1_v = color(0);
+
+int efRandom = color(random(255),random(255),random(255));      //
+int c1Random = color(random(255),random(255),random(255));      //
 
 // SACA ESTO
 int cf1 = 237;
@@ -127,12 +133,15 @@ float d;
 int k = 1;
 int j = 1;
 int h = 1;
+int g = 1;
 
 public void setup(){
-
+ colores = new int[3];
+  colores[0] = color(random(255),random(255),random(255));
+  colores[1] = color(random(255),random(255),random(255));
+  colores[2] = color(random(255),random(255),random(255));
 // Incializacion de clases
 a = new Vert1();
-
 background(255);
 
 }
@@ -159,45 +168,11 @@ public void draw(){
   if (d == 1){
     cg = cg + 15;
   }
-             // ANILLO EXTERIOR 1
-             // ¿PALETA DE COLOR? vs ¿ARCOIRIS?
 
-///////////////////////// FOONDO INTERACTIVO ////////////////////////////////
-//println(telx, tely);
 ///////////////////////// GRADIENTE ELIPSES ////////////////////////
-noFill();
-// 1.-
-strokeWeight(165);
-stroke(t1);
-ellipse(height/2, width/2, 455,455);
-// 2.-
-strokeWeight(15);
-stroke(i6);
-ellipse(height/2, width/2, 475,475);
-// 3.-
-strokeWeight(15);
-stroke(i5);
-ellipse(height/2, width/2, 495,495);
-// 4.-
-strokeWeight(15);
-stroke(i4);
-ellipse(height/2, width/2, 515,515);
-// 5.-
-strokeWeight(15);
-stroke(i3);
-ellipse(height/2, width/2, 535,535);
-// 6.-
-strokeWeight(15);
-stroke(i2);
-ellipse(height/2, width/2, 555,555);
-// 7.-
-strokeWeight(15);
-stroke(i1);
-ellipse(height/2, width/2, 575,575);
-// 8.-
-strokeWeight(40);
-stroke(f1);
-ellipse(height/2, width/2, 620,620);
+a.lerpcc();
+
+///////////////////////////////////////////////////////////////////
 
 ////////////////////////// ELLIPSE CENTRAL /////////////////////////////////
 
@@ -223,11 +198,51 @@ ellipse(height/2, width/2, 620,620);
        popMatrix();
 }
 
-if (keyPressed) {
-      if (key == 'n' || key == 'N') {
-      //f1 = color (0);
-      //t1 = color(0);
-      c1 = c1_v;
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+if(g == 2){
+  fill(colores[0]);
+  ellipse(0,0,1500,1500);
+  //translate(width/2, height/2);
+  for(int i = 0; i < 360; i+=20)  {
+     float x = sin(radians(i))*150;
+     float y = cos(radians(i))*150;
+     pushMatrix();                        //
+     translate(x,y);                      //
+     rotate(radians(-i-frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
+     noStroke();                          // COLOR ANILLO DE PETALOS
+     fill(colores[1]);                    //
+     rect(0,50,120,20, 25);               //
+     popMatrix();
+  }
+
+  for(int i = 0; i < 360; i+=15)  {
+     float x = sin(radians(i))*150;
+     float y = cos(radians(i))*150;
+     pushMatrix();                        //
+     translate(x,y);                      //
+     rotate(radians(-i+frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
+     noStroke();                          // COLOR ANILLO DE PETALOS
+     fill(colores[1]);                    //
+     rect(0,30,20,20, 25);                    //
+     rect(0,50,20,20, 25);                //
+     rect(0,70,20,20, 25);                //
+     rect(0,90,20,20, 25);                //
+     popMatrix();
+  }
+
+  stroke(colores[2]);
+  strokeWeight(50);
+  noFill();
+  ellipse(0,0,600,600);
+
+}
+
+
+if (keyPressed) {                          // Estado permanente al apretar "n"
+      if (key == 'n' || key == 'N') {      // Solo si apreta la tecla "n" o "N"
+      c1 = c1_v;                           //
       c2 = c2_v;
       ef = ef_v;
       h = 2;
@@ -240,57 +255,53 @@ if (keyPressed) {
     for(int i = 0; i < 360; i+=20)  {
        float x = sin(radians(i))*150;
        float y = cos(radians(i))*150;
-       pushMatrix();
-       translate(x,y);
+       pushMatrix();                        //
+       translate(x,y);                      //
        rotate(radians(-i-frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-       noStroke();                     // COLOR ANILLO DE PETALOS
-       fill(115,22,48);
-       rect(0,50,120,20, 25);
+       noStroke();                          // COLOR ANILLO DE PETALOS
+       fill(115,22,48);                     //
+       rect(0,50,120,20, 25);               //
        popMatrix();
     }
-    stroke(c1_v);
-    strokeWeight(50);
-    noFill();
-    ellipse(0,0,600,600);
- }
+  stroke(c1_v);
+  strokeWeight(50);
+  noFill();
+  ellipse(0,0,600,600);
+  }
 
 /////////////////////////// ANILLO EXTERIOR //////////////////////////////////
 strokeWeight(30);
-             for(int i = 0; i < 360; i+=12){
-                   float x = sin(radians(i))*150;
-                   float y = cos(radians(i))*150;
-                   pushMatrix();
-                   translate(x, y);
-                   rotate(radians(-i+frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-                   stroke(c1);                     // COLOR ANILLO DE PETALOS
-// COLOR
-                   fill(sin(radians(i/2))*255, 50, 100);
-                   rect(0, 0, 120, 20, 25);
-                   popMatrix();
+for(int i = 0; i < 360; i+=12){
+  float x = sin(radians(i))*150;
+  float y = cos(radians(i))*150;
+  pushMatrix();
+  translate(x, y);
+  rotate(radians(-i+frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
+  stroke(c1);                     // COLOR ANILLO DE PETALOS
+  fill(sin(radians(i/2))*255, 50, 100);
+  rect(0, 0, 120, 20, 25);
+  popMatrix();
                }
 
 ////////////////////////// ANILLO EXTERIOR 2 /////////////////////////////////
 
-               for(int i = 0; i < 360; i+=12){
-                     float x = sin(radians(i))*150;  // suma al origen
-                     float y = cos(radians(i))*150;  // suma al origen // intenta sacarle a la multiplicacion
-                     pushMatrix();
-                     translate(x, y); // hace que no partan desde el punto (0,0)
-                     rotate(radians(-i+frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-                     stroke(ef);                     // sin bordes
-// COLOR
-                     fill(50, 50, 100);
-                     rect(0, 0, 120, 5, 15);
-                     popMatrix();
-                 }
+for(int i = 0; i < 360; i+=12){
+  float x = sin(radians(i))*150;  // suma al origen
+  float y = cos(radians(i))*150;  // suma al origen // intenta sacarle a la multiplicacion
+  pushMatrix();
+  translate(x, y); // hace que no partan desde el punto (0,0)
+  rotate(radians(-i+frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
+  stroke(ef);                     // sin bordes
+  fill(50, 50, 100);
+  rect(0, 0, 120, 5, 15);
+  popMatrix();
+}
 
 if (k == 2){
   fill(0xfff0ca4d);
-  noStroke();                          // Colocar color de paleta seleccionada
-  ellipse(0,0,600,600);                // Elipse de fondoque va a tapar el sketch
+  noStroke();                             // Colocar color de paleta seleccionada
+  ellipse(0,0,600,600);                   // Elipse de fondoque va a tapar el sketch
   for(int i = 0; i < 360; i+=10){
-     float x = sin(radians(i))*150;       // suma al origen
-     float y = cos(radians(i))*150;       // suma al origen // intenta sacarle a la multiplicacion
      rotate(radians(l));                  // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
      stroke(0xffde5b49);                     // Color de bordes
      fill(0xff3c989e);                       // Color relleno de ellipses pequeñas y rectangulos del borde
@@ -307,18 +318,20 @@ if (k == 2){
 
   noStroke();                     // Sin bordes
   fill(0xff324d5c);                  // Color elipse central de la interacción
-  ellipse(0,0,120,120);           //
-
-  noStroke();
-  fill(0xff324d5c);
-  ellipse(0,0,120,120);
+  ellipse(0,0,120,120);           // Elipse central de la interacción
 }
 
+// Cambio figuras blanco y negro
 if (j == 2){
-  strokeWeight(40);
-  stroke(255);
-  noFill();
-  ellipse(0,0, 560,560);
+  strokeWeight(40);               // Ancho de bordes de la figura
+  stroke(255);                    // Ancho de bordes de la figura
+  noFill();                       // Sin relleno
+  ellipse(0,0, 560,560);          // Elipse negra que tapa las figuras de colores
+
+  strokeWeight(20);               // Ancho de bordes de la figura
+  stroke(0);                    // Ancho de bordes de la figura
+  noFill();                       // Sin relleno
+  ellipse(0,0, 500,500);          // Elipse negra que tapa las figuras de colores
 }
 
 ///////////////////////////// INTERACCIONES ///////////////////////////////
@@ -331,15 +344,23 @@ if (mousePressed) {
     k = 1;
 }
 
+if (keyPressed) {
+  if (key == 'm' || key == 'M') {
+    g = 2;                      // Cambio de color de lerpColor = Lerp "to"
+    ef = efRandom;
+    }
+}
+
 // BOTON CAMBIO DE COLOR
+
 if (keyPressed) {
   if (key == 'b' || key == 'B') {
     j = 2;
-    c1 = c1_c;
-    ef = c2_c;
+    c1 = c1_c;                              // De color original a negro
+    ef = c2_c;                              // De color original a blanco
 
-    f1 = color (0);
-    t1 = color(0);
+    f1 = color (0);                         // Cambio de color de lerpColor = Lerp "from"
+    t1 = color(255);                        // Cambio de color de lerpColor = Lerp "to"
     }
 }
 
@@ -645,35 +666,50 @@ hastay = mouseY;
 class Vert1{
   //float x;
   //float y;
-
   //Editor de color
   int r = 255  ;
   int g = 103 ;
   int b = 63 ;
 Vert1(){
-
-  //this.x   = x  ;
-  //this.y   = y  ;
+  
 }
 
 
-public void fondo(){
-fill(0);
-noStroke();                    // Colocar color de paleta seleccionada
-ellipse(0, 0, 600, 600);                // Elipse de fondoque va a tapar el sketch
-for(int i = 0; i < 360; i+=10){
-      float x = sin(radians(i))*150;  // suma al origen
-      float y = cos(radians(i))*150;  // suma al origen // intenta sacarle a la multiplicacion
-      //pushMatrix();
-      //translate(x, y); // hace que no partan desde el punto (0,0)
-      rotate(radians(-i+frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-      stroke(55);                     // sin bordes
-// COLOR
-      fill(50, 50, 100);
-      rect(0, 0, 120, 5, 15);
-      //popMatrix();
+public void lerpcc(){
+  noFill();
+  // 1.-
+  strokeWeight(165);
+  stroke(t1);
+  ellipse(height/2, width/2, 455,455);
+  // 2.-
+  strokeWeight(15);
+  stroke(i6);
+  ellipse(height/2, width/2, 475,475);
+  // 3.-
+  strokeWeight(15);
+  stroke(i5);
+  ellipse(height/2, width/2, 495,495);
+  // 4.-
+  strokeWeight(15);
+  stroke(i4);
+  ellipse(height/2, width/2, 515,515);
+  // 5.-
+  strokeWeight(15);
+  stroke(i3);
+  ellipse(height/2, width/2, 535,535);
+  // 6.-
+  strokeWeight(15);
+  stroke(i2);
+  ellipse(height/2, width/2, 555,555);
+  // 7.-
+  strokeWeight(15);
+  stroke(i1);
+  ellipse(height/2, width/2, 575,575);
+  // 8.-
+  strokeWeight(40);
+  stroke(f1);
+  ellipse(height/2, width/2, 620,620);
   }
-}
 
 }
 

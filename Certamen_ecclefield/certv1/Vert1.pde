@@ -2,35 +2,50 @@
 class Vert1{
   //float x;
   //float y;
-
   //Editor de color
   int r = 255  ;
   int g = 103 ;
   int b = 63 ;
 Vert1(){
-
-  //this.x   = x  ;
-  //this.y   = y  ;
+  
 }
 
 
-void fondo(){
-fill(0);
-noStroke();                    // Colocar color de paleta seleccionada
-ellipse(0, 0, 600, 600);                // Elipse de fondoque va a tapar el sketch
-for(int i = 0; i < 360; i+=10){
-      float x = sin(radians(i))*150;  // suma al origen
-      float y = cos(radians(i))*150;  // suma al origen // intenta sacarle a la multiplicacion
-      //pushMatrix();
-      //translate(x, y); // hace que no partan desde el punto (0,0)
-      rotate(radians(-i+frameCount+90));   // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-      stroke(55);                     // sin bordes
-// COLOR
-      fill(50, 50, 100);
-      rect(0, 0, 120, 5, 15);
-      //popMatrix();
+void lerpcc(){
+  noFill();
+  // 1.-
+  strokeWeight(165);
+  stroke(t1);
+  ellipse(height/2, width/2, 455,455);
+  // 2.-
+  strokeWeight(15);
+  stroke(i6);
+  ellipse(height/2, width/2, 475,475);
+  // 3.-
+  strokeWeight(15);
+  stroke(i5);
+  ellipse(height/2, width/2, 495,495);
+  // 4.-
+  strokeWeight(15);
+  stroke(i4);
+  ellipse(height/2, width/2, 515,515);
+  // 5.-
+  strokeWeight(15);
+  stroke(i3);
+  ellipse(height/2, width/2, 535,535);
+  // 6.-
+  strokeWeight(15);
+  stroke(i2);
+  ellipse(height/2, width/2, 555,555);
+  // 7.-
+  strokeWeight(15);
+  stroke(i1);
+  ellipse(height/2, width/2, 575,575);
+  // 8.-
+  strokeWeight(40);
+  stroke(f1);
+  ellipse(height/2, width/2, 620,620);
   }
-}
 
 }
 
