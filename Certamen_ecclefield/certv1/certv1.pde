@@ -200,7 +200,7 @@ for(int i = 0; i < 360; i+=12){
   pushMatrix();                             // Abriendo propiedades independientes
   translate(x, y);                          // Se traslada el origen, que al mismo tiempo esta en movimiento, esta vez para el lado contrario
   rotate(radians(-i+frameCount+90));        // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-  stroke(ef);                               // sin bordes
+  stroke(ef);                               // Rellenar el borde de un color
   fill(50, 50, 100);                        // Se rellena la figura con un color azul
   rect(0, 0, 120, 5, 15);                   // Se crean las figuras que componen el petalo: Parte no sombreada
   popMatrix();                              // Cerrando propiedades independientes
@@ -269,6 +269,10 @@ if (keyPressed) {                           // Interacción de teclado
     ef = c2_c;                              // De color original a blanco
     f1 = color (0);                         // Cambio de color de lerpColor = Lerp "from"
     t1 = color(255);                        // Cambio de color de lerpColor = Lerp "to"
+    } else {
+      c1_c = c1;
+      ef_c = ef;
+      j = 1;
     }
 }
 
@@ -276,10 +280,15 @@ if (keyPressed) {                           // Interacción de teclado
 if (keyPressed) {                               // Interacción tecla
   if (key == 'r' || key == 'R') {               // Cuando apreto la tecla "R"
     background(255);                            // Se crea un fondo para "borrar" todo
-    c1_c = c1;                                  // los colores que han sido cambiados vuelven a su valor original
-    c2_c = c2;                                  // los colores que han sido cambiados vuelven a su valor original
-    ef_c = ef;                                  // los colores que han sido cambiados vuelven a su valor original
-    j = 1;                                      // Se desactiva la booleana j
+    c1_c = c1;
+    c1_v = c1;                             // los colores que han sido cambiados vuelven a su valor original
+    c2_c = c2;
+    c2_v = c2;                                  // los colores que han sido cambiados vuelven a su valor original
+    ef_c = ef;
+    ef_v = ef;                                  // los colores que han sido cambiados vuelven a su valor original
+    j = 1;
+    k = 1;
+    h = 1;                                      // Se desactiva la booleana j
     f1 = color(237,82,118);                     // El incio del lerp vuelve a su color original
     t1 = color(70,179,157);                     // El final del lert vuelve a su color original
     }

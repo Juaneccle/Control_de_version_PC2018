@@ -17,25 +17,17 @@ public class certv1 extends PApplet {
 /*
 //INSTRUCCIONES//
 
-1.-
-2.-
-3.-
-4.-
-
-
+1.	Presionando la tecla “n” se cambian los colores a una paleta de colores predefinida, además se agrega una forma que hace que la composición sea más interesante y distinta.
+2.	Presionando la tecla “m” se cambian los colores a una paleta de colores aleatoria, además se le agrega una forma que hace que la composición sea más interesante y distinta.
+3.	Presionando la tecla “b” algunos de los colores se cambian por blancos y negros.
+4.	Presionando el mouse la composición se convierte en otra, con otros movimientos, colores y formas.
+5.	Presionando la tecla  ”r” el sketch se reinicia.
 
 //////////////////////////////////// SKETCH ////////////////////////////////////
 
 //OBJETIVOS: // HACER QUE CAMBIE DE COLOR CON ArrayList DE COLOR/
              // HACER QUE LA VELOCIDAD CAMBIE CON KEYPRESSED
              // INCORPORAR UNA INTERACCION CON EL MOUSE (¿GRADIENTES? ¿COS, SIN? ¿?)
-
-//////////////////////////////////// SKETCH ////////////////////////////////////
-
-             //OBJETIVOS: // HACER QUE CAMBIE DE COLOR CON ArrayList DE COLOR/
-                          // HACER QUE LA VELOCIDAD CAMBIE CON KEYPRESSED
-                          // INCORPORAR UNA INTERACCION CON EL MOUSE (¿GRADIENTES? ¿COS, SIN? ¿?)
-
 */
 
 
@@ -109,13 +101,13 @@ public void draw(){
   background(255);         // Fondo permamente
   a.lerpcc();              //Gradiente usando lerp: Cargar una funcion desde la clase
 
-///////////////////////////////// ELLIPSE CENTRAL ///////////////////////////////////
+/////////////////////////////////////////////////// ELLIPSE CENTRAL ////////////////////////////////////////////////////
 
    noStroke();                                   // Sin Bordes
    fill(ef);                                     // Color de ellipse del centro
    ellipse(width/2, height/2, 300, 300);         // Ellipse del centro
 
-/////////////////////////////////// ANILLO FONDO //////////////////////////////////
+////////////////////////////////////////////////////// ANILLO FONDO ////////////////////////////////////////////////////
 
    strokeWeight(30);
    noStroke();                                      // Sin bordes
@@ -131,7 +123,7 @@ public void draw(){
        popMatrix();                                 // Cerrando propiedades independientes
 }
 
-//////////////////////////////// INTERACCIÓN TECLA "M" /////////////////////////////////
+/////////////////////////////////////////////// INTERACCIÓN TECLA "M" /////////////////////////////////////////////////
 
   if(g == 2){                               // Condicion para interacción tecla "m"
     fill(colores[0]);                       // Se rellena con el primer color de la lista
@@ -170,7 +162,7 @@ public void draw(){
 
 }
 
-//////////////////////////////// INTERACCIONES TECLA "N"  /////////////////////////////////
+//////////////////////////////////////////// INTERACCIONES TECLA "N"  ////////////////////////////////////////////////////
 
 if (keyPressed) {                          // Estado permanente al apretar "n"
       if (key == 'n' || key == 'N') {      // Solo si apreta la tecla "n" o "N": Cambio de paleta y activación de boolean "h"
@@ -224,13 +216,13 @@ for(int i = 0; i < 360; i+=12){
   pushMatrix();                             // Abriendo propiedades independientes
   translate(x, y);                          // Se traslada el origen, que al mismo tiempo esta en movimiento, esta vez para el lado contrario
   rotate(radians(-i+frameCount+90));        // proporciona el movimiento al sketch / cambia los ejes / direccion de rotacion
-  stroke(ef);                               // sin bordes
+  stroke(ef);                               // Rellenar el borde de un color
   fill(50, 50, 100);                        // Se rellena la figura con un color azul
   rect(0, 0, 120, 5, 15);                   // Se crean las figuras que componen el petalo: Parte no sombreada
   popMatrix();                              // Cerrando propiedades independientes
 }
 
-/////////////////////////////////// IINTERACCIÓN MOUSE ////////////////////////////////////////////
+////////////////////////////////////////// IINTERACCIÓN MOUSE ///////////////////////////////////////////////////////////////
 
 if (k == 2){
   fill(0xfff0ca4d);                          // Se rellena con el color Amarillo
@@ -264,6 +256,15 @@ if (j == 2){
   strokeWeight(20);               // Ancho de bordes de la figura
   stroke(0);                      // Ancho de bordes de la figura
   ellipse(0,0, 500,500);          // Elipse negra que tapa las figuras de colores
+  c1_c = c1;
+  c1_v = c1;                             // los colores que han sido cambiados vuelven a su valor original
+  c2_c = c2;
+  c2_v = c2;                                  // los colores que han sido cambiados vuelven a su valor original
+  ef_c = ef;
+  ef_v = ef;                                  // los colores que han sido cambiados vuelven a su valor original
+  j = 1;
+  k = 1;
+  h = 1;    
 }
 
 //////////////////////////////////////// INTERACCIONES ///////////////////////////////////////
@@ -286,7 +287,6 @@ if (keyPressed) {                        // Interacción de teclado
 }
 
 // BOTON CAMBIO DE COLOR
-
 if (keyPressed) {                           // Interacción de teclado
   if (key == 'b' || key == 'B') {           // Cuando apreto la tecla "b"
     j = 2;                                  // Se activa la booleana
@@ -294,6 +294,10 @@ if (keyPressed) {                           // Interacción de teclado
     ef = c2_c;                              // De color original a blanco
     f1 = color (0);                         // Cambio de color de lerpColor = Lerp "from"
     t1 = color(255);                        // Cambio de color de lerpColor = Lerp "to"
+    } else {
+      c1_c = c1;
+      ef_c = ef;
+      j = 1;
     }
 }
 
@@ -301,10 +305,15 @@ if (keyPressed) {                           // Interacción de teclado
 if (keyPressed) {                               // Interacción tecla
   if (key == 'r' || key == 'R') {               // Cuando apreto la tecla "R"
     background(255);                            // Se crea un fondo para "borrar" todo
-    c1_c = c1;                                  // los colores que han sido cambiados vuelven a su valor original
-    c2_c = c2;                                  // los colores que han sido cambiados vuelven a su valor original
-    ef_c = ef;                                  // los colores que han sido cambiados vuelven a su valor original
-    j = 1;                                      // Se desactiva la booleana j
+    c1_c = c1;
+    c1_v = c1;                             // los colores que han sido cambiados vuelven a su valor original
+    c2_c = c2;
+    c2_v = c2;                                  // los colores que han sido cambiados vuelven a su valor original
+    ef_c = ef;
+    ef_v = ef;                                  // los colores que han sido cambiados vuelven a su valor original
+    j = 1;
+    k = 1;
+    h = 1;                                      // Se desactiva la booleana j
     f1 = color(237,82,118);                     // El incio del lerp vuelve a su color original
     t1 = color(70,179,157);                     // El final del lert vuelve a su color original
     }
