@@ -1,12 +1,18 @@
 // la gaby provoca movimientos diagonales en su sketch usando boolean
 // variables para el movimiento del objeto
-int k;
-int l;
-float que = 5;
+
+// VER SI O SI: VARIABLE.IO
 Figura a;
 
+boolean di,dd,da,
+
+int k;
+int l;
 int dirX;
 int dirY;
+
+float que = 5;
+
 
 void setup(){
 size(800, 800);
@@ -24,25 +30,27 @@ translate(width/2, height/2);
 a.forma(mouseX);
 popMatrix();
 a.mov(k,l);
-k+dirX;
-l+dirY;
+k += dirX;
+l += dirY;
 }
 
 
 void keyPressed(){
 // Gatilladores de la interaccion
-if (key == 'q' || key == 'Q') {
-    dirX = -1;
+if (key == 'q' || key == 'Q') { dirX = -1;
 }
 if (key == 'w' || key == 'W'){
     dirX = 1;
 }
 if (key == 'e' || key == 'E') {
-    l++;
+    //l++;
+    dirY = -1;
 }
 
+
 if (key == 'r' || key == 'R') {
-    l--;
+    dirY = 1;
+    //l--;
 }
 if (key == 'a' || key == 'Q') {
     que=0;
@@ -59,5 +67,22 @@ if (key == 'd' || key == 'E') {
 
 /*
 
+// variables
+boolan i, d, a, ab;
+
 agrgando otra variable de velocidad al movimiento booleano,
-se le van sumanod
+se le van sumando para generar otras direcciones. la velocidad
+al final le permite frenar y cambiar de direccion.
+
+if (a){ velx+= 0,1}     // si el boolenao es verdadero
+if (b){ velx-= 0,1}     // si el boolenao es verdadero
+if (c){ vely+= 0,1}     // si el boolenao es verdadero
+if (d){ vely-= 0,1}     // si el boolenao es verdadero
+
+tambien se puede cambiar a int: " se hace otra funcion que se llame movint" con nuevas variables y todo
+
+if (a){ velx+= 0,1}     // si el boolenao es verdadero
+if (b){ velx-= 0,1}     // si el boolenao es verdadero
+if (c){ vely+= 0,1}     // si el boolenao es verdadero
+if (d){ vely-= 0,1}     // si el boolenao es verdadero
+*/
