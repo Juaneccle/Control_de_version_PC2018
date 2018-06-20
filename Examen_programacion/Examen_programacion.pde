@@ -3,8 +3,9 @@
 
 // VER SI O SI: VARIABLE.IO
 Figura a;
+Figura b;
 
-boolean di,dd,da,
+boolean di,dd,da;
 
 int k;
 int l;
@@ -18,6 +19,7 @@ void setup(){
 size(800, 800);
 // Inicializacion de clase
 a = new Figura();
+b = new Figura();
 }
 
 void draw(){
@@ -93,6 +95,6 @@ Encargo:
   en el video de schieffman.
 - Se tienen que hacer las modificaciones de inicio ahora
 - Ver el video de schiefmannnn!!!  CTM
-- 
+-
 
 */

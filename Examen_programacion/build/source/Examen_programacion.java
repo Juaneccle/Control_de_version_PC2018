@@ -19,8 +19,9 @@ public class Examen_programacion extends PApplet {
 
 // VER SI O SI: VARIABLE.IO
 Figura a;
+Figura b;
 
-//boolean di,dd,da,
+boolean di,dd,da;
 
 int k;
 int l;
@@ -34,6 +35,7 @@ public void setup(){
 
 // Inicializacion de clase
 a = new Figura();
+b = new Figura();
 }
 
 public void draw(){
@@ -101,6 +103,16 @@ if (a){ velx+= 0,1}     // si el boolenao es verdadero
 if (b){ velx-= 0,1}     // si el boolenao es verdadero
 if (c){ vely+= 0,1}     // si el boolenao es verdadero
 if (d){ vely-= 0,1}     // si el boolenao es verdadero
+
+Encargo:
+- Hacer un segundo objeto
+- Crear dos objetos distintos "Figura o, p"
+- Las modificaciones de inicio se hacen en el constructor, al igual que en
+  en el video de schieffman.
+- Se tienen que hacer las modificaciones de inicio ahora
+- Ver el video de schiefmannnn!!!  CTM
+-
+
 */
 class Figura{
 
