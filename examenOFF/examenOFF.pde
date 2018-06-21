@@ -1,11 +1,19 @@
 Table table;
 Bubble[] bubbles;
+//PFont();
+boolean anual, diario, mensual, j, k, l, m, n;      // incorporar booleanas durante la clase PARA NAVEGACION
 
-boolean a, b, c, j, k, l, m, n;      // incorporar booleanas durante la clase
+int temperaturaMax = 100;
+int temperaturaMin = -100;
 
 void setup() {
   size(1420, 300);
   cargarDatos();
+
+
+
+
+
 }
 void draw() {
   translate(0,-200);
@@ -14,10 +22,11 @@ void draw() {
   for (int i = 0; i < bubbles.length; i++) {
   bubbles[i].circGeneral();
   bubbles[i].segNivel();
+temperaturaMax = 100;
 
-  }
+
 }
-
+}
 void cargarDatos() {
   table = loadTable("Data_miami_juan.csv", "header");
   bubbles = new Bubble[table.getRowCount()];
@@ -32,15 +41,35 @@ void cargarDatos() {
      float y = row.getFloat("proTemp");
      float d = row.getFloat("minTemp");
      float e = row.getFloat("WindDirDegrees");
+     String h = row.getString("D");
 
-     bubbles[i] = new Bubble(dia, y, "h", powViento, i, e, d);
-//String n = row.getString("maxVelViento");
+     bubbles[i] = new Bubble(dia, y, h, powViento, i, e, d, promVel, maxVel);
+     row.setString("D", "hola");
+
+     if(x> temperaturaMax){
+     x = temperaturaMax;
+     }
+     println(temperaturaMax);
+     //String n = row.getString("maxVelViento");
 
 }
 }
-
 
 /*
+
+
+- NO se pueden hacer maps con "int"
+///////////////////////////////////////////////////////////////////
+s = second();       // frame count de segundo del compu
+sp = s;             //
+
+if(s != sp);
+se suma un dia      //
+time++;             // La variable que va a ir cambiando cada segundo
+sp = s;             // es como el estado antiguo
+
+//////////////////////////////////////////////////////////////////
+
 DataOFF [] dataOFF;
 
 
