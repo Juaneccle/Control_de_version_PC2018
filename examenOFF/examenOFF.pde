@@ -3,7 +3,7 @@ Bubble[] bubbles;
 //PFont();
 boolean anual, diario, mensual, j, k, l, m, n;      // incorporar booleanas durante la clase PARA NAVEGACION
 
-int temperaturaMax = 100;
+
 int temperaturaMin = -100;
 
 void setup() {
@@ -22,7 +22,6 @@ void draw() {
   for (int i = 0; i < bubbles.length; i++) {
   bubbles[i].circGeneral();
   bubbles[i].segNivel();
-temperaturaMax = 100;
 
 
 }
@@ -30,6 +29,10 @@ temperaturaMax = 100;
 void cargarDatos() {
   table = loadTable("Data_miami_juan.csv", "header");
   bubbles = new Bubble[table.getRowCount()];
+
+  float temperaturaMax =0;
+  float temperaturaMin =0;
+
   for (int i = 0; i < table.getRowCount(); i++) {
      TableRow row = table.getRow(i);
 
@@ -47,12 +50,17 @@ void cargarDatos() {
      row.setString("D", "hola");
 
      if(x> temperaturaMax){
-     x = temperaturaMax;
+     temperaturaMax = x;
      }
-     println(temperaturaMax);
+     if(x> temperaturaMin){
+     temperaturaMin = d;
+     }
      //String n = row.getString("maxVelViento");
 
 }
+println(temperaturaMax);
+println(temperaturaMin);
+
 }
 
 /*
