@@ -1,32 +1,41 @@
 Table table;
 Bubble[] bubbles;
+
+boolean a, b, c, j, k, l, m, n;      // incorporar booleanas durante la clase
+
 void setup() {
-  size(900, 900);
-  loadData();
+  size(1420, 300);
+  cargarDatos();
 }
 void draw() {
-translate(0,-200);
+  translate(0,-200);
   background(255);
   // Display all bubbles
   for (int i = 0; i < bubbles.length; i++) {
-    bubbles[i].display();
+  bubbles[i].circGeneral();
+  bubbles[i].segNivel();
+
   }
 }
-void loadData() {
+
+void cargarDatos() {
   table = loadTable("Data_miami_juan.csv", "header");
   bubbles = new Bubble[table.getRowCount()];
   for (int i = 0; i < table.getRowCount(); i++) {
-  TableRow row = table.getRow(i);
-  println(i);
+     TableRow row = table.getRow(i);
 
-float humedad = row.getFloat("maxVelViento");
-float dia = row.getFloat("D");
-float x = row.getFloat("maxTemp");
-float y = row.getFloat("proTemp");
-float d = row.getFloat("minTemp");
+     float dia = row.getFloat("D");
+     float powViento = row.getFloat("fuerzaViento");
+     float maxVel = row.getFloat("maxVelViento");
+     float promVel = row.getFloat("mediaVelViento");
+     float x = row.getFloat("maxTemp");
+     float y = row.getFloat("proTemp");
+     float d = row.getFloat("minTemp");
+     float e = row.getFloat("WindDirDegrees");
+
+     bubbles[i] = new Bubble(dia, y, "h", powViento, i, e, d);
 //String n = row.getString("maxVelViento");
 
-bubbles[i] = new Bubble(dia, y, dia, "h", humedad, i);
 }
 }
 
