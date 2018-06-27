@@ -3,6 +3,8 @@ class Bubble {
 
   color [] colores;        // Lista Colores (Solucionar en clases)
   float x, y, d;           // Temperatura
+  float tempMinima;
+  float tempMaxima;
   float mes;               // MES
   float velocidadPRO;      // velocidad viento minima
   float velocidadMAX;      // velocidad viento minima
@@ -11,8 +13,9 @@ class Bubble {
   String valor;            // imprime el valor de cada dato
   int i;
   boolean over = false;
+
   // Create the Bubble
-  Bubble(float tempX, float tempY,  String s, float tempH, int i, float graViento, float tempD, float velP, float velM) {
+  Bubble(float diasAno, float tempMaxima,  String s, float fuerzaV, int i, float graViento, float tempMinima, float velP, float velM, Boolean diario, Boolean mensual, Boolean anual) {
 // VER EN CLASES EL TEMA DEL COLOR
      colores = new color [7];
 
@@ -29,18 +32,47 @@ class Bubble {
        colores[6] = color(139, 32, 82); // Morado.
 
 
-    x = tempX;
-    y = tempY;
-    d = tempD;
-    velocidadPRO = velP;      // velocidad viento minima
-    velocidadMAX = velM;      // velocidad viento minima
+    x = diasAno;
+    //y = tempMaxima;
+  //  d = tempD;
     valor = s;                // String h, valor del dia
-    powViento = tempH;
-    //this.tempH = this.powViento;
+    //this.powViento = fuerzaV;
+    //this.fuerzaV = this.powViento;
     //this.powViento =  map(0,30,0,250);
+    //this.fuerzaV = this.powViento;
+    //this.powViento =  map(0,30,0,250);
+
     grados = graViento;
     this.i = i;
+    this.powViento = fuerzaV;       //
+    this.velocidadPRO = velP;       // velocidad viento minima
+    this.velocidadMAX = velM;       // velocidad viento minima
+    this.tempMaxima = tempMaxima;
+    this.tempMinima = tempMinima;
+    //this.d = tempD;
+
+
   }
+
+  void display(){
+    if (diario) { //Figura 1 círculo
+          background(255);
+          noStroke();
+          fill(255, 50, 0);
+          ellipse(100,100,100,100);
+    }
+
+    if (mensual) { //Figura 1 círculo
+
+    }
+
+    if (anual) { //Figura 1 círculo
+          circGeneral();
+          matrect();
+    }
+
+  }
+
   // Checking if mouse is over the bubble
   void rollover(float px, float py) {
     float d = dist(px, py, x, y);
@@ -52,26 +84,49 @@ class Bubble {
   }
   // Display the Bubble
   void circGeneral() {
-
+    pushMatrix();
+    translate(width/2, height/2);
+    rotate(radians(i));
     noStroke();
     strokeWeight(2);
     //noFill();
-    fill(150,150,grados);
-    float xo = map (i, 0, 364, 0, width);
-    rect(xo,350, 3, powViento);
-    fill(x,0,d);
-    rect(xo, 340, 3, y* -1);
+
+//  float xo  = map (i, 0, 364, 0, 200);
+    float ty         = map (powViento, 0, 36, 0, -65);       // Mapeo
+    float ty2        = map (velocidadPRO, 0, 30, 0, 165);
+    float altoAE     = map (tempMaxima, 0, 36, 0, 120);       // Mapeo temperatura MINIMA/ Colocar los valores reales
+    float colorTAE   = map (tempMaxima, 20, 32, 0, 255);       // Mapeo temperatura maxima
+    float altoAI     = map (tempMinima, 0, 36, 0, 85);       // Mapeo temperatura MINIMA/ Colocar los valores reales
+    float colorTAI   = map (tempMinima, 17, 29, 0, 255);       // Mapeo temperatura maxima
+
+  //  float ty2 = map (velocidadPRO, 0, 30, 0, 165);
+
+    fill(colorTAE,50, 50);
+    rect(0,210, 2,altoAE);
+    fill(colorTAI*1.3,150,150);               // Mapear los valores de color
+    rect(0, 210, 2, altoAI);
+    fill(ty2,0,0);
+    ellipse(1.5,210+altoAI,6,6);
+    ellipse(1.5,210+altoAE,6,6);
+
+    // ellipse(i,ty,10,10);                       // esta esta filete ql: hace
+    // ellipse(10,ty,10,10);                      // esta esta filete ql
+    //
+    //  println(colorT);
     if (over) {
       //fill(0);
       //textAlign(CENTER);
       //text(xo, 450, powViento);
+
 
     textAlign(CENTER);
     text(valor, 50, y+powViento/2+20);
     textSize(200);
     fill(150);
     println(valor);
+
 }
+popMatrix();
 }
 
    void segNivel(){                // imprime los datos de una semana para poder compararlos
@@ -85,7 +140,7 @@ class Bubble {
      rect(width/2, height/2, velocidadPRO, velocidadPRO);
      rect(width/2, height/2, velocidadMAX, velocidadMAX);
    }
-}
+
 
  void menu(){
 //   textAlign(CENTER);
@@ -95,6 +150,21 @@ class Bubble {
 //   println(valor);
 
 
+}
+
+
+void matrect(){
+  for (int i = 0; i < bubbles.length; i++) {
+pushMatrix();
+    translate(width/2, height/2);
+    rotate(radians(i));
+    fill(200,200,200,25);
+    rect(0,370,2,50);
+popMatrix();
+}
+
+
+}
 }
 
 // REVISAR EL CERTAMEN DE LA GABY //
@@ -113,9 +183,9 @@ class DataOFF {
   String valor;
   boolean over = false;
   // Create the DataOFF
-  DataOFF(float tempX, float tempY, float tempD, String s) {
-    x = tempX;
-    y = tempY;
+  DataOFF(float diasAno, float tempMaxima, float tempD, String s) {
+    x = diasAno;
+    y = tempMaxima;
     velocidad = tempD;
     valor = s;
   }

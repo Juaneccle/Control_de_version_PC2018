@@ -1,31 +1,39 @@
+// ¿Estilo Vapor Wave?
+
 Table table;
 Bubble[] bubbles;
 //PFont();
-boolean anual, diario, mensual, j, k, l, m, n;      // incorporar booleanas durante la clase PARA NAVEGACION
-
+boolean j, k, l, m, n;
+boolean anual;      // incorporar booleanas durante la clase PARA NAVEGACION
+boolean mensual;
+boolean diario;
 
 int temperaturaMin = -100;
 
 void setup() {
-  size(1420, 300);
+  size(1420, 900);
   cargarDatos();
-
+//  divisiones();
 
 
 
 
 }
 void draw() {
-  translate(0,-200);
   background(255);
+  println(diario);
+
   // Display all bubbles
   for (int i = 0; i < bubbles.length; i++) {
-  bubbles[i].circGeneral();
-  bubbles[i].segNivel();
+
+//  bubbles[i].circGeneral();
+//  bubbles[i].matrect();
+    bubbles[i].display();
 
 
 }
 }
+
 void cargarDatos() {
   table = loadTable("Data_miami_juan.csv", "header");
   bubbles = new Bubble[table.getRowCount()];
@@ -46,8 +54,9 @@ void cargarDatos() {
      float e = row.getFloat("WindDirDegrees");
      String h = row.getString("D");
 
-     bubbles[i] = new Bubble(dia, y, h, powViento, i, e, d, promVel, maxVel);
+     bubbles[i] = new Bubble(dia, y, h, powViento, i, e, d, promVel, maxVel, diario, mensual, anual);
      row.setString("D", "hola");
+
 
      if(x> temperaturaMax){
      temperaturaMax = x;
@@ -58,11 +67,24 @@ void cargarDatos() {
      //String n = row.getString("maxVelViento");
 
 }
+
+// de temperatura maxima
 println(temperaturaMax);
 println(temperaturaMin);
 
 }
 
+void keyPressed(){
+  if (key == '1') { //aparecen elipses
+      anual = !anual;
+    }
+    if (key == '2') { //aparecen rectangulos
+      mensual = !mensual;
+    }
+    if (key == '3') { //aparecen cuadrados
+      diario = !diario;
+  }
+}
 /*
 
 
