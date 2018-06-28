@@ -1,14 +1,39 @@
 // ¿Estilo Vapor Wave?
 // boton 1
-int limX  = 300;
-int limY  = 270;
-int limY2 = 470;
-int limX2 = 400;
+int limX  = 690;
+int limY  = 100;
+int limY2 = 200;
+int limX2 = 820;
 // boton 2
-int flimX  = 470;
+int flimX  = 770;
 int flimY  = 150;
 int flimY2 = 400;
-int flimX2 = 600;
+int flimX2 = 870;
+// boton 3
+int mlimX  = 800;
+int mlimY  = 250;
+int mlimY2 = 350;
+int mlimX2 = 990;
+// boton 4
+int alimX  = 800;
+int alimY  = 450;
+int alimY2 = 550;
+int alimX2 = 990;
+//boton 5
+int malimX  = 720;
+int malimY  = 550;
+int malimY2 = 650;
+int malimX2 = 890;
+//boton 6
+int jlimX  = 690;
+int jlimY  = 590;
+int jlimY2 = 750;
+int jlimX2 = 820;
+//boton 6
+int jllimX  = 590;
+int jllimY  = 620;
+int jllimY2 = 720;
+int jllimX2 = 650;
 
 
 Table table;
@@ -20,7 +45,7 @@ boolean mensual;
 boolean diario;
 
 int temperaturaMin = -100;
-
+int mSt,mEnd;
 
 void setup() {
   size(1420, 900);
@@ -40,27 +65,69 @@ void draw() {
 
   for (int i = 0; i < bubbles.length; i++) {
  bubbles[i].display();
-
 }
+
+for (int i = mSt; i <mEnd; i++) {
+bubbles[i].mes();
+}
+
+
+ if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
+   mSt= 0;
+   mEnd= 30;
+ }
+ if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
+   mSt= 31;
+   mEnd= 59;
+ }
+ if (mouseX > mlimX && mouseY > mlimY && mouseX < mlimX2 && mouseY < mlimY2){
+   mSt=60;
+   mEnd=90;
+ }
+
+ if (mouseX > alimX && mouseY > alimY && mouseX < alimX2 && mouseY < alimY2){
+   mSt=91;
+   mEnd=120;
+ }
+
+ if (mouseX > malimX && mouseY > malimY && mouseX < malimX2 && mouseY < malimY2){
+   mSt=121;
+   mEnd=150;
+ }
+
+ if (mouseX > jlimX && mouseY > jlimY && mouseX < jlimX2 && mouseY < jlimY2){
+   mSt=151;
+   mEnd=180;
+ }
+
+ if (mouseX > jllimX && mouseY > jllimY && mouseX < jllimX2 && mouseY < jllimY2){
+   mSt=181;
+   mEnd=210;
+ }
 // BOTONES //
 
  // comprobaciones:
- //rect(limX,limY,limX2/2,limY2/2);        // RARA esta wa
- //rect(flimX,flimY,flimX2/2,flimY2/2);    // RARA esta wa
+ fill(150,150,250, 50);
+ rect(limX,limY,limX2,limY2);        // RARA esta wa
+ rect(flimX,flimY,flimX2/2,flimY2/2);    // RARA esta wa
+ rect(mlimX,mlimY,mlimX2/2,mlimY2/2);    // RARA esta wa
+ rect(malimX,malimY,malimX2/2,malimY2/2);    // RARA esta wa
+ rect(alimX,alimY,alimX2/2,alimY2/2);    // RARA esta wa
+ rect(jlimX,jlimY,jlimX2/2,jlimY2/2);    // RARA esta wa
+ rect(jllimX,jllimY,jllimX2/2,jllimY2/2);    // RARA esta wa
 
 // boton enero o cualquier mes
-fill(150,150,250, 50);
-  if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
+
+if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
     println("activado");
     triangle(width/2, height/2, -100, 460, -100, 75);
-  }
 
-
+}
 // boton febrero, o cualquier mes
   if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
     println("activado");
     triangle(width/2, height/2, -100, 75, 200, -150);
-  }
+    }
 
 
 if(mensual == true){

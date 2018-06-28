@@ -16,15 +16,40 @@ public class examenOFF extends PApplet {
 
 // ¿Estilo Vapor Wave?
 // boton 1
-int limX  = 300;
-int limY  = 270;
-int limY2 = 470;
-int limX2 = 400;
+int limX  = 690;
+int limY  = 100;
+int limY2 = 200;
+int limX2 = 820;
 // boton 2
-int flimX  = 470;
+int flimX  = 770;
 int flimY  = 150;
 int flimY2 = 400;
-int flimX2 = 600;
+int flimX2 = 870;
+// boton 3
+int mlimX  = 800;
+int mlimY  = 250;
+int mlimY2 = 350;
+int mlimX2 = 990;
+// boton 4
+int alimX  = 800;
+int alimY  = 450;
+int alimY2 = 550;
+int alimX2 = 990;
+//boton 5
+int malimX  = 720;
+int malimY  = 550;
+int malimY2 = 650;
+int malimX2 = 890;
+//boton 6
+int jlimX  = 690;
+int jlimY  = 590;
+int jlimY2 = 750;
+int jlimX2 = 820;
+//boton 6
+int jllimX  = 590;
+int jllimY  = 620;
+int jllimY2 = 720;
+int jllimX2 = 650;
 
 
 Table table;
@@ -36,7 +61,7 @@ boolean mensual;
 boolean diario;
 
 int temperaturaMin = -100;
-
+int mSt,mEnd;
 
 public void setup() {
   
@@ -56,27 +81,69 @@ public void draw() {
 
   for (int i = 0; i < bubbles.length; i++) {
  bubbles[i].display();
-
 }
+
+for (int i = mSt; i <mEnd; i++) {
+bubbles[i].mes();
+}
+
+
+ if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
+   mSt= 0;
+   mEnd= 30;
+ }
+ if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
+   mSt= 31;
+   mEnd= 59;
+ }
+ if (mouseX > mlimX && mouseY > mlimY && mouseX < mlimX2 && mouseY < mlimY2){
+   mSt=60;
+   mEnd=90;
+ }
+
+ if (mouseX > alimX && mouseY > alimY && mouseX < alimX2 && mouseY < alimY2){
+   mSt=91;
+   mEnd=120;
+ }
+
+ if (mouseX > malimX && mouseY > malimY && mouseX < malimX2 && mouseY < malimY2){
+   mSt=121;
+   mEnd=150;
+ }
+
+ if (mouseX > jlimX && mouseY > jlimY && mouseX < jlimX2 && mouseY < jlimY2){
+   mSt=151;
+   mEnd=180;
+ }
+
+ if (mouseX > jllimX && mouseY > jllimY && mouseX < jllimX2 && mouseY < jllimY2){
+   mSt=181;
+   mEnd=210;
+ }
 // BOTONES //
 
  // comprobaciones:
- //rect(limX,limY,limX2/2,limY2/2);        // RARA esta wa
- //rect(flimX,flimY,flimX2/2,flimY2/2);    // RARA esta wa
+ fill(150,150,250, 50);
+ rect(limX,limY,limX2,limY2);        // RARA esta wa
+ rect(flimX,flimY,flimX2/2,flimY2/2);    // RARA esta wa
+ rect(mlimX,mlimY,mlimX2/2,mlimY2/2);    // RARA esta wa
+ rect(malimX,malimY,malimX2/2,malimY2/2);    // RARA esta wa
+ rect(alimX,alimY,alimX2/2,alimY2/2);    // RARA esta wa
+ rect(jlimX,jlimY,jlimX2/2,jlimY2/2);    // RARA esta wa
+ rect(jllimX,jllimY,jllimX2/2,jllimY2/2);    // RARA esta wa
 
 // boton enero o cualquier mes
-fill(150,150,250, 50);
-  if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
+
+if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
     println("activado");
     triangle(width/2, height/2, -100, 460, -100, 75);
-  }
 
-
+}
 // boton febrero, o cualquier mes
   if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
     println("activado");
     triangle(width/2, height/2, -100, 75, 200, -150);
-  }
+    }
 
 
 if(mensual == true){
@@ -342,25 +409,23 @@ class Bubble {
     this.tempMaxima = tempMaxima;
     this.tempMinima = tempMinima;
     //this.d = tempD;
-
-
   }
 
   public void display(){
     if (diario) { //Figura 1 círculo
-          background(255);
-          noStroke();
-          fill(255, 50, 0);
-          ellipse(100,100,100,100);
+     background(255);
+     noStroke();
+     fill(255, 50, 0);
+     ellipse(100,100,100,100);
     }
 
     if (mensual) { //Figura 1 círculo    DEBERIA SER PRO FRACCION (Resolver en clases)
-        segNivel();
+       segNivel();
     }
 
     if (anual) { //Figura 1 círculo
-          circGeneral();
-          matrect();
+       circGeneral();
+       matrect();
           //divisiones();
     }
 
@@ -407,42 +472,30 @@ class Bubble {
     //
     //  println(colorT);
     if (over) {
-      //fill(0);
-      //textAlign(CENTER);
-      //text(xo, 450, powViento);
-
-
     textAlign(CENTER);
     text(valor, 50, y+powViento/2+20);
     textSize(200);
     fill(150);
     println(valor);
-
 }
 popMatrix();
 }
 
    public void segNivel(){                // imprime los datos de un mes para poder compararloss
      float  tv = map (tempMaxima, 0, 32, 0, 85);
+}
 
-  if (i > 0 && i < 31){
+public void mes(){
+    float  tv = map (tempMaxima, 0, 32, 0, 85);  // cambiar con control f
     pushMatrix();
-         translate(width/2, height/2);
-         rotate(radians(i));
+    translate(width/2, height/2);
+    rotate(radians(i+180));
     fill(150,150,250);
     rect(0,180,2,-tv);
     popMatrix();
-  if (i > 32 && i < 62){
 
-    pushMatrix();
-         fill(150,150,250);
-         //rect(0,180,2,-tv);
-
-
-  popMatrix();
-  }
 }
-}
+
  public void menu(){
 //   textAlign(CENTER);
 //   text(valor, 50, y+powViento/2+20);
@@ -462,7 +515,7 @@ pushMatrix();
     translate(width/2, height/2);
     rotate(radians(i));
     fill(0,0,0,25);
-    rect(0,370,2,50);
+    //rect(0,370,2,50);
     //rect(0,370,10,10);
 popMatrix();
 

@@ -55,25 +55,23 @@ class Bubble {
     this.tempMaxima = tempMaxima;
     this.tempMinima = tempMinima;
     //this.d = tempD;
-
-
   }
 
   void display(){
     if (diario) { //Figura 1 círculo
-          background(255);
-          noStroke();
-          fill(255, 50, 0);
-          ellipse(100,100,100,100);
+     background(255);
+     noStroke();
+     fill(255, 50, 0);
+     ellipse(100,100,100,100);
     }
 
     if (mensual) { //Figura 1 círculo    DEBERIA SER PRO FRACCION (Resolver en clases)
-        segNivel();
+       segNivel();
     }
 
     if (anual) { //Figura 1 círculo
-          circGeneral();
-          matrect();
+       circGeneral();
+       matrect();
           //divisiones();
     }
 
@@ -120,40 +118,30 @@ class Bubble {
     //
     //  println(colorT);
     if (over) {
-      //fill(0);
-      //textAlign(CENTER);
-      //text(xo, 450, powViento);
-
-
     textAlign(CENTER);
     text(valor, 50, y+powViento/2+20);
     textSize(200);
     fill(150);
     println(valor);
-
 }
 popMatrix();
 }
 
    void segNivel(){                // imprime los datos de un mes para poder compararloss
      float  tv = map (tempMaxima, 0, 32, 0, 85);
+}
 
-  if (i > 0 && i < 31){
+void mes(){
+    float  tv = map (tempMaxima, 0, 32, 0, 85);  // cambiar con control f
     pushMatrix();
-         translate(width/2, height/2);
-         rotate(radians(i));
+    translate(width/2, height/2);
+    rotate(radians(i+180));
     fill(150,150,250);
     rect(0,180,2,-tv);
     popMatrix();
-  if (i > 32 && i < 62){
 
-    pushMatrix();
-         fill(150,150,250);
-         rect(0,180,2,-tv);
-  popMatrix();
-  }
 }
-}
+
  void menu(){
 //   textAlign(CENTER);
 //   text(valor, 50, y+powViento/2+20);
@@ -173,7 +161,7 @@ pushMatrix();
     translate(width/2, height/2);
     rotate(radians(i));
     fill(0,0,0,25);
-    rect(0,370,2,50);
+    //rect(0,370,2,50);
     //rect(0,370,10,10);
 popMatrix();
 
