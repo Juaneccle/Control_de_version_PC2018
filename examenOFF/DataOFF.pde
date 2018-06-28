@@ -14,9 +14,14 @@ class Bubble {
   int i;
   boolean over = false;
 
+ int fillmaes;
+ int rot;
+ int alphames;
+ int segrot;
+
   // Create the Bubble
   Bubble(float diasAno, float tempMaxima,  String s, float fuerzaV, int i, float graViento, float tempMinima, float velP, float velM, Boolean diario, Boolean mensual, Boolean anual) {
-// VER EN CLASES EL TEMA DEL COLOR
+  // VER EN CLASES EL TEMA DEL COLOR
      colores = new color [7];
 
      // this.maxima = map(0,30,0,250); // mapeo para expandir el rango de cada variable "exagerar la distancia entre valores"
@@ -62,13 +67,14 @@ class Bubble {
           ellipse(100,100,100,100);
     }
 
-    if (mensual) { //Figura 1 círculo
-
+    if (mensual) { //Figura 1 círculo    DEBERIA SER PRO FRACCION (Resolver en clases)
+        segNivel();
     }
 
     if (anual) { //Figura 1 círculo
           circGeneral();
           matrect();
+          //divisiones();
     }
 
   }
@@ -129,19 +135,25 @@ class Bubble {
 popMatrix();
 }
 
-   void segNivel(){                // imprime los datos de una semana para poder compararlos
-     float posX_S;
-     noStroke();
-     strokeWeight(2);
-     fill(150,150,grados);                      //
-     float xEsp = map (i, 0, 7, 0, width);
-     rect(width/2, height/2, powViento , powViento);
-     fill(x,0,d);                               // colores mas fuertes
-     rect(width/2, height/2, velocidadPRO, velocidadPRO);
-     rect(width/2, height/2, velocidadMAX, velocidadMAX);
-   }
+   void segNivel(){                // imprime los datos de un mes para poder compararloss
+     float  tv = map (tempMaxima, 0, 32, 0, 85);
 
+  if (i > 0 && i < 31){
+    pushMatrix();
+         translate(width/2, height/2);
+         rotate(radians(i));
+    fill(150,150,250);
+    rect(0,180,2,-tv);
+    popMatrix();
+  if (i > 32 && i < 62){
 
+    pushMatrix();
+         fill(150,150,250);
+         rect(0,180,2,-tv);
+  popMatrix();
+  }
+}
+}
  void menu(){
 //   textAlign(CENTER);
 //   text(valor, 50, y+powViento/2+20);
@@ -154,18 +166,32 @@ popMatrix();
 
 
 void matrect(){
-  for (int i = 0; i < bubbles.length; i++) {
+
+//for (int i = 0; i < bubbles.length; i++) {
+
 pushMatrix();
     translate(width/2, height/2);
     rotate(radians(i));
-    fill(200,200,200,25);
+    fill(0,0,0,25);
     rect(0,370,2,50);
+    //rect(0,370,10,10);
 popMatrix();
+
+//}
 }
 
+void divisiones(int fillmes, int rot, int alphames){
+  pushMatrix();
+
+  translate(width/2, height/2);
+  rotate(radians(i+rot));
+  fill(fillmes,150,150, alphames);
+  rect(0,370,10,10);
+  popMatrix();
 
 }
 }
+
 
 // REVISAR EL CERTAMEN DE LA GABY //
 //color cTemperatura(float tem){         // esta es una funcion

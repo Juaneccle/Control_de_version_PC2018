@@ -15,16 +15,28 @@ import java.io.IOException;
 public class examenOFF extends PApplet {
 
 // ¿Estilo Vapor Wave?
+// boton 1
+int limX  = 300;
+int limY  = 270;
+int limY2 = 470;
+int limX2 = 400;
+// boton 2
+int flimX  = 470;
+int flimY  = 150;
+int flimY2 = 400;
+int flimX2 = 600;
+
 
 Table table;
 Bubble[] bubbles;
-//PFont();
+
 boolean j, k, l, m, n;
-boolean anual;      // incorporar booleanas durante la clase PARA NAVEGACION
+boolean anual = true;      // incorporar booleanas durante la clase PARA NAVEGACION
 boolean mensual;
 boolean diario;
 
 int temperaturaMin = -100;
+
 
 public void setup() {
   
@@ -36,21 +48,66 @@ public void setup() {
 
 }
 public void draw() {
+//  println(diario);
   background(255);
-  println(diario);
+  println(mouseX);
+  println(mouseY);
 
-  // Display all bubbles
+
   for (int i = 0; i < bubbles.length; i++) {
-
-//  bubbles[i].circGeneral();
-//  bubbles[i].matrect();
-  bubbles[i].display();
-
+ bubbles[i].display();
 
 }
+// BOTONES //
+
+ // comprobaciones:
+ //rect(limX,limY,limX2/2,limY2/2);        // RARA esta wa
+ //rect(flimX,flimY,flimX2/2,flimY2/2);    // RARA esta wa
+
+// boton enero o cualquier mes
+fill(150,150,250, 50);
+  if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
+    println("activado");
+    triangle(width/2, height/2, -100, 460, -100, 75);
+  }
+
+
+// boton febrero, o cualquier mes
+  if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
+    println("activado");
+    triangle(width/2, height/2, -100, 75, 200, -150);
+  }
+
+
+if(mensual == true){
+//for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].segNivel(255);
+//for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].segNivel(224);
+
+  for (int i = 0; i < 31; i+=5) {
+
+}
+}
+// DIVISION MESES
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(255, 30, 10);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(224, 60, 20);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(203, 90, 30);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(182, 120, 40);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(140, 180, 60);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(161, 150, 50);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(119, 210, 70);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(98, 240, 80);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(77, 270, 90);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(56, 300, 100);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(35, 330, 110);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(14, 360, 120);
+for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].divisiones(0, 390, 130);
+
 }
 
 public void cargarDatos() {
+
+  //rect(limX,limY,limX2,limY2);
+
   table = loadTable("Data_miami_juan.csv", "header");
   bubbles = new Bubble[table.getRowCount()];
 
@@ -58,8 +115,8 @@ public void cargarDatos() {
   float temperaturaMin =0;
 
   for (int i = 0; i < table.getRowCount(); i++) {
-     TableRow row = table.getRow(i);
 
+     TableRow row = table.getRow(i);
      float dia = row.getFloat("D");
      float powViento = row.getFloat("fuerzaViento");
      float maxVel = row.getFloat("maxVelViento");
@@ -80,18 +137,15 @@ public void cargarDatos() {
      if(x> temperaturaMin){
      temperaturaMin = d;
      }
-     //String n = row.getString("maxVelViento");
+
+
 
 }
-
-// de temperatura maxima
-println(temperaturaMax);
-println(temperaturaMin);
 
 }
 
 public void keyPressed(){
-  if (key == '1') { //aparecen elipses
+    if (key == '1') { //aparecen elipses
       anual = !anual;
     }
     if (key == '2') { //aparecen rectangulos
@@ -100,7 +154,18 @@ public void keyPressed(){
     if (key == '3') { //aparecen cuadrados
       diario = !diario;
   }
+
 }
+
+
+// de temperatura maxima
+//println(temperaturaMax);
+//println(temperaturaMin);
+
+//rect(limX,limY,limX2,limY2);
+
+// Creacion de botones
+
 /*
 
 
@@ -236,9 +301,14 @@ class Bubble {
   int i;
   boolean over = false;
 
+ int fillmaes;
+ int rot;
+ int alphames;
+ int segrot;
+
   // Create the Bubble
   Bubble(float diasAno, float tempMaxima,  String s, float fuerzaV, int i, float graViento, float tempMinima, float velP, float velM, Boolean diario, Boolean mensual, Boolean anual) {
-// VER EN CLASES EL TEMA DEL COLOR
+  // VER EN CLASES EL TEMA DEL COLOR
      colores = new int [7];
 
      // this.maxima = map(0,30,0,250); // mapeo para expandir el rango de cada variable "exagerar la distancia entre valores"
@@ -284,13 +354,14 @@ class Bubble {
           ellipse(100,100,100,100);
     }
 
-    if (mensual) { //Figura 1 círculo
-
+    if (mensual) { //Figura 1 círculo    DEBERIA SER PRO FRACCION (Resolver en clases)
+        segNivel();
     }
 
     if (anual) { //Figura 1 círculo
           circGeneral();
           matrect();
+          //divisiones();
     }
 
   }
@@ -351,19 +422,27 @@ class Bubble {
 popMatrix();
 }
 
-   public void segNivel(){                // imprime los datos de una semana para poder compararlos
-     float posX_S;
-     noStroke();
-     strokeWeight(2);
-     fill(150,150,grados);                      //
-     float xEsp = map (i, 0, 7, 0, width);
-     rect(width/2, height/2, powViento , powViento);
-     fill(x,0,d);                               // colores mas fuertes
-     rect(width/2, height/2, velocidadPRO, velocidadPRO);
-     rect(width/2, height/2, velocidadMAX, velocidadMAX);
-   }
+   public void segNivel(){                // imprime los datos de un mes para poder compararloss
+     float  tv = map (tempMaxima, 0, 32, 0, 85);
+
+  if (i > 0 && i < 31){
+    pushMatrix();
+         translate(width/2, height/2);
+         rotate(radians(i));
+    fill(150,150,250);
+    rect(0,180,2,-tv);
+    popMatrix();
+  if (i > 32 && i < 62){
+
+    pushMatrix();
+         fill(150,150,250);
+         //rect(0,180,2,-tv);
 
 
+  popMatrix();
+  }
+}
+}
  public void menu(){
 //   textAlign(CENTER);
 //   text(valor, 50, y+powViento/2+20);
@@ -376,18 +455,32 @@ popMatrix();
 
 
 public void matrect(){
-  for (int i = 0; i < bubbles.length; i++) {
+
+//for (int i = 0; i < bubbles.length; i++) {
+
 pushMatrix();
     translate(width/2, height/2);
     rotate(radians(i));
-    fill(200,200,200,25);
+    fill(0,0,0,25);
     rect(0,370,2,50);
+    //rect(0,370,10,10);
 popMatrix();
+
+//}
 }
 
+public void divisiones(int fillmes, int rot, int alphames){
+  pushMatrix();
+
+  translate(width/2, height/2);
+  rotate(radians(i+rot));
+  fill(fillmes,150,150, alphames);
+  rect(0,370,10,10);
+  popMatrix();
 
 }
 }
+
 
 // REVISAR EL CERTAMEN DE LA GABY //
 //color cTemperatura(float tem){         // esta es una funcion
