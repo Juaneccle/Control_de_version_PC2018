@@ -15,6 +15,8 @@ import java.io.IOException;
 public class examenOFF extends PApplet {
 
 // ¿Estilo Vapor Wave?
+// Buscar referentes de "Color, diagramacion y movimiento" un archvo que tenga todos los referentes. como funciones
+
 // boton 1
 int limX  = 690;
 int limY  = 100;
@@ -45,12 +47,36 @@ int jlimX  = 690;
 int jlimY  = 590;
 int jlimY2 = 750;
 int jlimX2 = 820;
-//boton 6
+//boton 7
 int jllimX  = 590;
 int jllimY  = 620;
 int jllimY2 = 720;
 int jllimX2 = 650;
-
+//boton 8
+int aglimX  = 490;
+int aglimY  = 560;
+int aglimY2 = 660;
+int aglimX2 = 550;
+//boton 9
+int slimX  = 420;
+int slimY  = 510;
+int slimY2 = 610;
+int slimX2 = 500;
+//boton 10
+int olimX  = 420;
+int olimY  = 410;
+int olimY2 = 510;
+int olimX2 = 500;
+//boton 11
+int nlimX  = 500;
+int nlimY  = 310;
+int nlimY2 = 410;
+int nlimX2 = 600;
+//boton 11
+int dlimX  = 600;
+int dlimY  = 210;
+int dlimY2 = 310;
+int dlimX2 = 700;
 
 Table table;
 Bubble[] bubbles;
@@ -64,12 +90,9 @@ int temperaturaMin = -100;
 int mSt,mEnd;
 
 public void setup() {
-  
+    // 1280, 720
   cargarDatos();
 //  divisiones();
-
-
-
 
 }
 public void draw() {
@@ -88,63 +111,82 @@ bubbles[i].mes();
 }
 
 
- if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
-   mSt= 0;
-   mEnd= 30;
- }
- if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
-   mSt= 31;
-   mEnd= 59;
- }
- if (mouseX > mlimX && mouseY > mlimY && mouseX < mlimX2 && mouseY < mlimY2){
-   mSt=60;
-   mEnd=90;
- }
+ if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2)           {mSt = 0;    mEnd = 30;}
+ if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2)       {mSt = 31;   mEnd = 59;}
+ if (mouseX > mlimX && mouseY > mlimY && mouseX < mlimX2 && mouseY < mlimY2)       {mSt = 60;   mEnd = 90;}
+ if (mouseX > alimX && mouseY > alimY && mouseX < alimX2 && mouseY < alimY2)       {mSt = 91;   mEnd = 120;}
+ if (mouseX > malimX && mouseY > malimY && mouseX < malimX2 && mouseY < malimY2)   {mSt = 121;  mEnd = 150;}
+ if (mouseX > jlimX && mouseY > jlimY && mouseX < jlimX2 && mouseY < jlimY2)       {mSt = 151;  mEnd = 180;}
+ if (mouseX > jllimX && mouseY > jllimY && mouseX < jllimX2 && mouseY < jllimY2)   {mSt = 181;  mEnd = 210;}
+ if (mouseX > aglimX && mouseY > aglimY && mouseX < aglimX2 && mouseY < aglimY2)   {mSt = 211;  mEnd = 240;}
+ if (mouseX > aglimX && mouseY > aglimY && mouseX < aglimX2 && mouseY < aglimY2)   {mSt = 211;  mEnd = 240;}
+ if (mouseX > slimX && mouseY > slimY && mouseX < slimX2 && mouseY < slimY2)       {mSt = 241;  mEnd = 270;}
+ if (mouseX > olimX && mouseY > olimY && mouseX < olimX2 && mouseY < olimY2)       {mSt = 271;  mEnd = 300;}
+ if (mouseX > nlimX && mouseY > nlimY && mouseX < nlimX2 && mouseY < nlimY2)       {mSt = 301;  mEnd = 330;}
+ if (mouseX > dlimX && mouseY > dlimY && mouseX < dlimX2 && mouseY < dlimY2)       {mSt = 331;  mEnd = 360;}
 
- if (mouseX > alimX && mouseY > alimY && mouseX < alimX2 && mouseY < alimY2){
-   mSt=91;
-   mEnd=120;
- }
 
- if (mouseX > malimX && mouseY > malimY && mouseX < malimX2 && mouseY < malimY2){
-   mSt=121;
-   mEnd=150;
- }
-
- if (mouseX > jlimX && mouseY > jlimY && mouseX < jlimX2 && mouseY < jlimY2){
-   mSt=151;
-   mEnd=180;
- }
-
- if (mouseX > jllimX && mouseY > jllimY && mouseX < jllimX2 && mouseY < jllimY2){
-   mSt=181;
-   mEnd=210;
- }
 // BOTONES //
 
  // comprobaciones:
  fill(150,150,250, 50);
- rect(limX,limY,limX2,limY2);        // RARA esta wa
- rect(flimX,flimY,flimX2/2,flimY2/2);    // RARA esta wa
- rect(mlimX,mlimY,mlimX2/2,mlimY2/2);    // RARA esta wa
- rect(malimX,malimY,malimX2/2,malimY2/2);    // RARA esta wa
- rect(alimX,alimY,alimX2/2,alimY2/2);    // RARA esta wa
- rect(jlimX,jlimY,jlimX2/2,jlimY2/2);    // RARA esta wa
- rect(jllimX,jllimY,jllimX2/2,jllimY2/2);    // RARA esta wa
+ // rect(limX,limY,limX2,limY2);                // RARA esta wa
+ // rect(flimX,flimY,flimX2/2,flimY2/2);        // RARA esta wa
+ // rect(mlimX,mlimY,mlimX2/2,mlimY2/2);        // RARA esta wa
+ // rect(malimX,malimY,malimX2/2,malimY2/2);    // RARA esta wa
+ // rect(alimX,alimY,alimX2/2,alimY2/2);        // RARA esta wa
+ // rect(jlimX,jlimY,jlimX2/2,jlimY2/2);        // RARA esta wa
+ // rect(jllimX,jllimY,jllimX2/2,jllimY2/2);    // RARA esta wa
+ // rect(aglimX,aglimY,aglimX2/2,aglimY2/2);    // RARA esta wa
+ // rect(slimX,slimY,slimX2/2,slimY2/2);        // RARA esta wa
+ // rect(olimX,olimY,olimX2/2,olimY2/2);        // RARA esta wa
+ // rect(nlimX,nlimY,nlimX2/2,nlimY2/2);        // RARA esta wa
+ // rect(dlimX,dlimY,dlimX2/2,dlimY2/2);        // RARA esta wa
 
 // boton enero o cualquier mes
 
+// triangulo enero
 if (mouseX > limX && mouseY > limY && mouseX < limX2 && mouseY < limY2){
-    println("activado");
-    triangle(width/2, height/2, -100, 460, -100, 75);
-
+  triangle(width/2, height/2, -100, 460, -100, 75);
 }
-// boton febrero, o cualquier mes
-  if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
-    println("activado");
-    triangle(width/2, height/2, -100, 75, 200, -150);
+
+// triangulo febrero
+if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
+  triangle(width/2, height/2, -100, 460, -100, 75);
+}
+
+// triangulo marzo
+if (mouseX > mlimX && mouseY > mlimY && mouseX < mlimX2 && mouseY < mlimY2){
+  triangle(width/2, height/2, -100, 75, 200, -150);
     }
 
+// triangulo abril
+if (mouseX > alimX && mouseY > alimY && mouseX < alimX2 && mouseY < alimY2){
+  triangle(width/2, height/2, -100, 75, 200, -150);
+                }
+
+// triangulo enero
+if (mouseX > mlimX && mouseY > mlimY && mouseX < mlimX2 && mouseY < mlimY2){
+  triangle(width/2, height/2, -100, 75, 200, -150);
+        }
+
+// triangulo enero
+if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
+  println("activado");
+  triangle(width/2, height/2, -100, 75, 200, -150);
+                }
+
+// triangulo enero
+if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
+  println("activado");
+  triangle(width/2, height/2, -100, 75, 200, -150);
+                    }
+
+// triangulo enero
+if (mouseX > flimX && mouseY > flimY && mouseX < flimX2 && mouseY < flimY2){
+  println("activado");
+  triangle(width/2, height/2, -100, 75, 200, -150);
+                        }
 
 if(mensual == true){
 //for(int i = 0; i < bubbles.length/12; i++)   bubbles[i].segNivel(255);
@@ -204,11 +246,7 @@ public void cargarDatos() {
      if(x> temperaturaMin){
      temperaturaMin = d;
      }
-
-
-
 }
-
 }
 
 public void keyPressed(){
@@ -480,9 +518,8 @@ class Bubble {
 }
 popMatrix();
 }
-
    public void segNivel(){                // imprime los datos de un mes para poder compararloss
-     float  tv = map (tempMaxima, 0, 32, 0, 85);
+   float  tv = map (tempMaxima, 0, 32, 0, 85);
 }
 
 public void mes(){

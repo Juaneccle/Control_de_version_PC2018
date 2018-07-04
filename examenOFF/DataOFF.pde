@@ -126,9 +126,8 @@ class Bubble {
 }
 popMatrix();
 }
-
    void segNivel(){                // imprime los datos de un mes para poder compararloss
-     float  tv = map (tempMaxima, 0, 32, 0, 85);
+   float  tv = map (tempMaxima, 0, 32, 0, 85);
 }
 
 void mes(){
